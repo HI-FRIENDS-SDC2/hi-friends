@@ -1,12 +1,16 @@
+# General
+threads: 8
+
 # Cube selection
-#incube: '/mnt/scratch/sdc2/data/evaluation/sky_eval.fits'
+incube: '/mnt/scratch/sdc2/data/evaluation/sky_eval.fits'
 #incube: '/mnt/scratch/sdc2/data/development/sky_dev_v2.fits'
-incube: '/mnt/scratch/sdc2/data/development_large/sky_ldev_v2.fits'
+#incube: '/mnt/scratch/sdc2/data/development_large/sky_ldev_v2.fits'
 #incube: '/mnt/sdc2-datacube/sky_full_v2.fits'
 
 # Splitting
-subcube_id: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
+subcube_id: [20, 21]# , 25, 26, 30, 31, 35, 39]
 coord_file: results/coord_subcubes.csv
+grid_plot: results/grid.png
 
 # Sofia
 sofia_param: "config/sofia_01.par"

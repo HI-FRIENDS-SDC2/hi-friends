@@ -22,9 +22,10 @@ rule define_chunks:
     conda:
         "envs/chunk_data.yml"
     params:
-        incube = config['incube']
+        incube = config['incube'],
+        grid_plot = config['grid_plot']
     shell:
-        "python workflow/scripts/define_chunks.py {params.incube}"
+        "python workflow/scripts/define_chunks.py -d {params.incube} -g {params.grid_plot}"
   
 
 rule split_subcube:
@@ -34,6 +35,8 @@ rule split_subcube:
         "results/subcubes/subcube_{idx}.fits"
     log:
         "results/logs/split_subcube/subcube_{idx}.log"
+    threads:
+        config['threads']
     conda:
         "envs/chunk_data.yml"
     params:
@@ -50,7 +53,7 @@ rule run_sofia:
     log:
         "results/logs/run_sofia/subcube_{idx}.log"
     threads:
-        12
+        config['threads']
     conda:
         "envs/process_data.yml"
     params:

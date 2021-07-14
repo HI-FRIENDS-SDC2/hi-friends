@@ -1,42 +1,20 @@
 import sys
+import argparse
 from spectral_cube import SpectralCube
 import numpy as np
 import matplotlib.pyplot as plt
 
-#infile = '/mnt/scratch/jmoldon/processing/SDC2/data/development_large/cont_ldev.fits'
-#infile = '/mnt/scratch/jmoldon/processing/SDC2/data/development_large/sky_ldev_v2.fits'
+def get_args():
+    '''This function parses and returns arguments passed in'''
+    # Assign description to the help doc
+    description = 'Define coordinates of grid of subcubes'
+    parser = argparse.ArgumentParser(description=description)
+    parser.add_argument('-d', '--datacube', dest='datacube', help='Data cube to process.')
+    parser.add_argument('-g', '--gridplot', dest='grid_plot', help='NAme of output file to plot the grid of subcubes')
+    args = parser.parse_args()
+    return args
 
-#infile = '/mnt/scratch/sdc2/data/development_large/cont_ldev.fits'
-#infile = '/mnt/scratch/sdc2/data/development_large/sky_ldev_v2.fits'
-
-#infile = '/mnt/sdc2-datacube/sky_full_v2.fits'
-#infile = '/mnt/scratch/sdc2/data/development_large/sky_ldev_v2.fits'
-
-infile = sys.argv[-1]
-
-cube = SpectralCube.read(infile)
-wcs = cube.wcs
-N = wcs.array_shape[1]
-
-def plot_border(wcs, N):
-    brc = wcs.pixel_to_world(0,0,0)[0]
-    trc = wcs.pixel_to_world(0,N,0)[0]
-    tlc = wcs.pixel_to_world(N,N,0)[0]
-    blc = wcs.pixel_to_world(N,0,0)[0]
-    plt.plot([brc.ra.deg, trc.ra.deg, tlc.ra.deg, blc.ra.deg, brc.ra.deg],
-             [brc.dec.deg, trc.dec.deg, tlc.dec.deg, blc.dec.deg, brc.dec.deg],
-            'k-', lw=4)
-
-subcube_size_pix = int(N/9)
-steps = np.arange(0, N, subcube_size_pix)[:-1]
-overlap = 40
-print(f"N = {N}")
-print(f"overlap = {overlap}")
-print(f"subcube_size_pix = {subcube_size_pix}")
-print(f"steps = {steps}")
-
-
-def define_subcubes(steps, wcs, overlap):
+def define_subcubes(steps, wcs, overlap, subcube_size_pix):
     coord_subcubes = []
     for sx in steps:
         for sy in steps:
@@ -61,32 +39,61 @@ def plot_subcubes(coord_subcubes, ls='-', color=None, lw=1):
                      xy=(np.mean([xlo, xhi]),
                          np.mean([ylo, yhi]))
                      )
-## Find subcubes coordinates and write them
-coord_subcubes = define_subcubes(steps, wcs, overlap)
-np.savetxt("results/coord_subcubes.csv", coord_subcubes, delimiter=",",
-           header="xlo,ylo,xhi,yhi", 
-           fmt="%f", comments='')
 
-#c = coord_subcubes[15]
-#sub_cube = cube.subcube(xlo=c[0], xhi=c[2], 
-#                        ylo=c[1], yhi=c[3])
+def plot_border(wcs, N):
+    brc = wcs.pixel_to_world(0,0,0)[0]
+    trc = wcs.pixel_to_world(0,N,0)[0]
+    tlc = wcs.pixel_to_world(N,N,0)[0]
+    blc = wcs.pixel_to_world(N,0,0)[0]
+    plt.plot([brc.ra.deg, trc.ra.deg, tlc.ra.deg, blc.ra.deg, brc.ra.deg],
+             [brc.dec.deg, trc.dec.deg, tlc.dec.deg, blc.dec.deg, brc.dec.deg],
+            'k-', lw=4)
 
-## Plot grid of subcubes
 
-#plt.subplot(projection=wcs, slices=['x','y', 0])  # It is not correcly projecting the pixels when using this mode. Alternatively, I could use APLpy
-plt.subplot()
-plot_border(wcs, N)
-plot_subcubes(coord_subcubes)
-#plt.grid()
-plt.xlabel('R.A. [deg]')
-plt.ylabel('Dec. [deg]')
-plt.gca().invert_xaxis()
 
-plt.savefig('results/grid.png', bbox_inches='tight', dpi=200)        
+def write_subcubes(steps, wcs, overlap, subcube_size_pix):
+    ## Find subcubes coordinates and write them
+    coord_subcubes = define_subcubes(steps, wcs, overlap, subcube_size_pix)
+    np.savetxt("results/coord_subcubes.csv", coord_subcubes, delimiter=",",
+               header="xlo,ylo,xhi,yhi", 
+               fmt="%f", comments='')
+    return coord_subcubes
 
-## Only the grid of pixels
-#for sx in steps:
-#    for sy in steps:
-#        print(sx, sx+s, sy, sy+s)
-#        plt.plot([sx-overlap/2, sx+s+overlap/2, sx+s+overlap/2, sx-overlap/2, sx-overlap/2],
-#                  [sy-overlap/2, sy-overlap/2, sy+s+overlap/2, sy+s+overlap/2, sy-overlap/2], '-')
+def plot_grid(wcs, coord_subcubes, grid_plot, N):
+    ## Plot grid of subcubes
+    #plt.subplot(projection=wcs, slices=['x','y', 0])  # It is not correcly projecting the pixels when using this mode. Alternatively, I could use APLpy
+    plt.subplot()
+    plot_border(wcs, N)
+    plot_subcubes(coord_subcubes)
+    #plt.grid()
+    plt.xlabel('R.A. [deg]')
+    plt.ylabel('Dec. [deg]')
+    plt.gca().invert_xaxis()
+    plt.savefig(grid_plot, bbox_inches='tight', dpi=200)        
+
+def main():
+    args = get_args()
+    infile = args.datacube
+    grid_plot = args.grid_plot
+
+    # Read the cube and coordinates definition 
+    cube = SpectralCube.read(infile)
+    wcs = cube.wcs
+    N = wcs.array_shape[1]
+    
+    # Define subcube properties
+    subcube_size_pix = int(N/9)
+    steps = np.arange(0, N, subcube_size_pix)[:-1]
+    overlap = 40
+    print(f"N = {N}")
+    print(f"overlap = {overlap}")
+    print(f"subcube_size_pix = {subcube_size_pix}")
+    print(f"steps = {steps}")
+
+    coord_subcubes = write_subcubes(steps, wcs, overlap, subcube_size_pix)
+    plot_grid(wcs, coord_subcubes, grid_plot, N)
+
+if __name__ == '__main__':
+    main()
+
+
