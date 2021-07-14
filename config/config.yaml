@@ -2,5 +2,5 @@ incube: '/mnt/scratch/sdc2/data/evaluation/sky_eval.fits'
 subcube_id: [16, 17, 18, 19, 20]
 sofia_param: "config/sofia_01.par"
 
-coord_file: resources/coord_subcubes.csv
+coord_file: results/coord_subcubes.csv
 

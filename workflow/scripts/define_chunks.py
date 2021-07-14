@@ -63,7 +63,7 @@ def plot_subcubes(coord_subcubes, ls='-', color=None, lw=1):
                      )
 ## Find subcubes coordinates and write them
 coord_subcubes = define_subcubes(steps, wcs, overlap)
-np.savetxt("resources/coord_subcubes.csv", coord_subcubes, delimiter=",",
+np.savetxt("results/coord_subcubes.csv", coord_subcubes, delimiter=",",
            header="xlo,ylo,xhi,yhi", 
            fmt="%f", comments='')
 
@@ -82,7 +82,7 @@ plt.xlabel('R.A. [deg]')
 plt.ylabel('Dec. [deg]')
 plt.gca().invert_xaxis()
 
-plt.savefig('resources/grid.png', bbox_inches='tight', dpi=200)        
+plt.savefig('results/grid.png', bbox_inches='tight', dpi=200)        
 
 ## Only the grid of pixels
 #for sx in steps:
