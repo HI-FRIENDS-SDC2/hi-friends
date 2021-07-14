@@ -8,5 +8,5 @@ rule concatenate_catalogs:
     log:
         "results/logs/concatenate/concatenate_catalogs.log"
     shell:
-        "cat {input} > {output}"
+        "cat {input} > {output} | tee {log}"
 

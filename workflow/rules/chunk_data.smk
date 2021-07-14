@@ -26,4 +26,4 @@ rule split_subcube:
         incube = config['incube'],
         coord_file = config['coord_file']
     shell:
-        "python workflow/scripts/split_subcube.py -d {params.incube} -c {params.coord_file} -i {wildcards.idx}"
+        "python workflow/scripts/split_subcube.py -d {params.incube} -c {params.coord_file} -i {wildcards.idx} | tee {log}"

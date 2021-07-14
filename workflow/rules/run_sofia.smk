@@ -12,7 +12,7 @@ rule run_sofia:
     params:
         sofia_param = config['sofia_param']
     shell:
-        "python workflow/scripts/run_sofia.py --parfile {params.sofia_param} --outname {wildcards.idx} --datacube {input} -r results/sofia"
+        "python workflow/scripts/run_sofia.py --parfile {params.sofia_param} --outname {wildcards.idx} --datacube {input} -r results/sofia | tee {log}"
 
 checkpoint sofia2cat:
     input:
@@ -26,4 +26,4 @@ checkpoint sofia2cat:
     params:
         sofia_param = config['sofia_param']
     shell:
-        "python workflow/scripts/sofia2cat.py --outname {wildcards.idx} -r results/sofia --incatalog {input}"
+        "python workflow/scripts/sofia2cat.py --outname {wildcards.idx} -r results/sofia --incatalog {input} | tee {log}"
