@@ -1,104 +1,13 @@
 configfile: "config/config.yaml"
 
-def generate_idxs():
-    subcube_id = config['subcube_id']
-    if subcube_id == 'all':
-        IDX = range(81)
 IDX = config['subcube_id']
+
+include: "rules/chunk_data.smk"
+include: "rules/run_sofia.smk"
+include: "rules/concatenate_catalogs.smk"
 
 
 rule final_catalog:
     input:
-#        'results/all.txt'
-#        expand("results/subcubes/subcube_{idx}.fits", idx=IDX)
-#        expand("results/sofia/{idx}/subcube_{idx}_cat.txt", idx=IDX)
-#        expand("results/sofia/{idx}/subcube_{idx}_final_catalog.csv", idx=IDX)
         "results/final_catalog.csv"
-
-rule define_chunks:
-    input:
-    output:
-        "results/coord_subcubes.csv"
-    conda:
-        "envs/chunk_data.yml"
-    params:
-        incube = config['incube'],
-        grid_plot = config['grid_plot']
-    shell:
-        "python workflow/scripts/define_chunks.py -d {params.incube} -g {params.grid_plot}"
-  
-
-rule split_subcube:
-    input:
-        "results/coord_subcubes.csv"
-    output:
-        "results/subcubes/subcube_{idx}.fits"
-    log:
-        "results/logs/split_subcube/subcube_{idx}.log"
-    threads:
-        config['threads']
-    conda:
-        "envs/chunk_data.yml"
-    params:
-        incube = config['incube'],
-	coord_file = config['coord_file']
-    shell:
-        "python workflow/scripts/split_subcube.py -d {params.incube} -c {params.coord_file} -i {wildcards.idx}"
-
-rule run_sofia:
-    input:
-        "results/subcubes/subcube_{idx}.fits"
-    output:
-        "results/sofia/{idx}/subcube_{idx}_cat.txt"
-    log:
-        "results/logs/run_sofia/subcube_{idx}.log"
-    threads:
-        config['threads']
-    conda:
-        "envs/process_data.yml"
-    params:
-        sofia_param = config['sofia_param']
-    shell:
-        "python workflow/scripts/run_sofia.py --parfile {params.sofia_param} --outname {wildcards.idx} --datacube {input} -r results/sofia"
-
-checkpoint sofia2cat:
-    input:
-        "results/sofia/{idx}/subcube_{idx}_cat.txt"
-    output:
-        "results/sofia/{idx}/subcube_{idx}_final_catalog.csv"
-    log:
-        "results/logs/sofia2cat/subcube_{idx}.log"
-    conda:
-        "envs/process_data.yml"
-    params:
-        sofia_param = config['sofia_param']
-    shell:
-        "python workflow/scripts/sofia2cat.py --outname {wildcards.idx} -r results/sofia --incatalog {input}"
-
-
-
-#def aggregate_input(wildcards):
-#    checkpoint_output = checkpoints.sofia2cat.get(**wildcards).output[0]
-#    return expand("results/sofia/{idx}/subcube_{idx}_final_catalog.csv",
-#           idx=glob_wildcards("results/sofia/{idx}/subcube_{idx}_final_catalog.csv").idx)
-
-#def aggregate_input(wildcards):
-#    checkpoint_output = checkpoints.sofia2cat.get(**wildcards).output[0]
-#    return expand("results/sofia/{idx}/subcube_{idx}_final_catalog.csv", idx=checkpoint_output)
-
-#    checkpoints.sofia2cat.get(idx=wildcards.idx)
-#    idxs = glob_wildcards(f"results/sofia/{{idx}}/subcube_{{idx}}_final_catalog.csv")
-#    return expand(f"results/sofia/{{idx}}/subcube_{{idx}}_final_catalog.csv", idx=idxs)
-
-
-rule concatenate_catalogs:
-    input:
-        expand("results/sofia/{idx}/subcube_{idx}_final_catalog.csv", idx=IDX, allow_missing=True)
-        #aggregate_input
-    output:
-        "results/final_catalog.csv"
-    log:
-        "results/logs/concatenate/concatenate_catalogs.log"
-    shell:
-        "cat {input} > {output}"
 
