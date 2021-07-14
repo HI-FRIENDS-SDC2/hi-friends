@@ -8,9 +8,13 @@ incube: '/mnt/scratch/sdc2/data/evaluation/sky_eval.fits'
 #incube: '/mnt/sdc2-datacube/sky_full_v2.fits'
 
 # Splitting
-subcube_id: [20, 21]# , 25, 26, 30, 31, 35, 39]
+subcube_id: [3, 2]# , 25, 26, 30, 31, 35, 39]
 coord_file: results/coord_subcubes.csv
 grid_plot: results/grid.png
+num_subcubes: 81
+pixel_overlap: 40
+#num_subcubes: 4
+#pixel_overlap: 6
 
 # Sofia
 sofia_param: "config/sofia_01.par"

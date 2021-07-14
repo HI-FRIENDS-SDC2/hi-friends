@@ -4,11 +4,15 @@ rule define_chunks:
         "results/coord_subcubes.csv"
     conda:
         "../envs/chunk_data.yml"
+    log:
+        "results/logs/define_chunks/define_chunks.log"
     params:
         incube = config['incube'],
-        grid_plot = config['grid_plot']
+        grid_plot = config['grid_plot'],
+        num_subcubes = config['num_subcubes'],
+        pixel_overlap = config['pixel_overlap']
     shell:
-        "python workflow/scripts/define_chunks.py -d {params.incube} -g {params.grid_plot}"
+        "python workflow/scripts/define_chunks.py -d {params.incube} -g {params.grid_plot} -n {params.num_subcubes} -o {params.pixel_overlap} | tee {log}"
 
 
 rule split_subcube:

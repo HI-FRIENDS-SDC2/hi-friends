@@ -21,14 +21,14 @@ def is_tool(name):
     """Check whether `name` is on PATH and marked as executable."""
     return which(name) is not None
 
-def read_config_parameter(configfile, parameter):
-    with open(configfile) as f:
-        data = yaml.load(f, Loader=yaml.FullLoader)
-    return data[parameter]
+#def read_config_parameter(configfile, parameter):
+#    with open(configfile) as f:
+#        data = yaml.load(f, Loader=yaml.FullLoader)
+#    return data[parameter]
 
 def update_parfile(parfile, output_path, datacube, outname):
     updated_parfile = os.path.join(output_path, 'sofia.par')
-    configfile = 'config/config.yml'
+#    configfile = 'config/config.yml'
 #    datacube_path = read_config_parameter(configfile, datacube)
     datacube_path = datacube
     datacube_name = os.path.basename(datacube).rstrip('.fits')

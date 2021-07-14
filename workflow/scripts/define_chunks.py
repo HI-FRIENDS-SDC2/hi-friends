@@ -11,6 +11,8 @@ def get_args():
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('-d', '--datacube', dest='datacube', help='Data cube to process.')
     parser.add_argument('-g', '--gridplot', dest='grid_plot', help='NAme of output file to plot the grid of subcubes')
+    parser.add_argument('-n', '--num_subcubes', dest='num_subcubes', help='Total number of subcubes to divide the master cube')
+    parser.add_argument('-o', '--overlap', dest='pixel_overlap', help='Number of pixels to extend the cube in each direction.')
     args = parser.parse_args()
     return args
 
@@ -75,6 +77,8 @@ def main():
     args = get_args()
     infile = args.datacube
     grid_plot = args.grid_plot
+    num_subcubes = int(args.num_subcubes)
+    pixel_overlap = int(args.pixel_overlap)
 
     # Read the cube and coordinates definition 
     cube = SpectralCube.read(infile)
@@ -82,12 +86,13 @@ def main():
     N = wcs.array_shape[1]
     
     # Define subcube properties
-    subcube_size_pix = int(N/9)
+    subcube_size_pix = int(N/np.sqrt(num_subcubes))
     steps = np.arange(0, N, subcube_size_pix)[:-1]
-    overlap = 40
+    overlap = pixel_overlap
     print(f"N = {N}")
     print(f"overlap = {overlap}")
     print(f"subcube_size_pix = {subcube_size_pix}")
+    print(f"Number of subcubes = {num_subcubes}")
     print(f"steps = {steps}")
 
     coord_subcubes = write_subcubes(steps, wcs, overlap, subcube_size_pix)
