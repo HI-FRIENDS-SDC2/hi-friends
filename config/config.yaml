@@ -1,0 +1,4 @@
+incube: '/mnt/scratch/jmoldon/processing/SDC2/data/development/sky_dev_v2.fits'
+subcube_id: [16, 17, 18, 19, 20]
+sofia_param: "config/sofia_01.par"
+
