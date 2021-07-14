@@ -7,7 +7,7 @@ def generate_idxs():
 IDX = config['subcube_id']
 
 
-rule final_output:
+rule final_catalog:
     input:
 #        'results/all.txt'
 #        expand("results/subcubes/subcube_{idx}.fits", idx=IDX)
