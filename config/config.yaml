@@ -1,4 +1,6 @@
-incube: '/mnt/scratch/jmoldon/processing/SDC2/data/development/sky_dev_v2.fits'
+incube: '/mnt/scratch/sdc2/data/evaluation/sky_eval.fits'
 subcube_id: [16, 17, 18, 19, 20]
 sofia_param: "config/sofia_01.par"
+
+coord_file: resources/coord_subcubes.csv
 

@@ -36,8 +36,11 @@ rule split_subcube:
         "results/logs/split_subcube/subcube_{idx}.log"
     conda:
         "envs/chunk_data.yml"
+    params:
+        incube = config['incube'],
+	coord_file = config['coord_file']
     shell:
-        "python workflow/scripts/split_subcube.py {wildcards.idx}"
+        "python workflow/scripts/split_subcube.py -d {params.incube} -c {params.coord_file} -i {wildcards.idx}"
 
 rule run_sofia:
     input:

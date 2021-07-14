@@ -1,22 +1,41 @@
 import sys
 import numpy as np
 from spectral_cube import SpectralCube
+import argparse
 from astropy import units as u
 
-idx = int(sys.argv[-1])
-infile = '/mnt/scratch/jmoldon/processing/SDC2/data/development/sky_dev_v2.fits'
+def get_args():
+    '''This function parses and returns arguments passed in'''
+    # Assign description to the help doc
+    description = 'Split subcube identified by an index'
+    parser = argparse.ArgumentParser(description=description)
+    parser.add_argument('-i', '--index', dest='idx', help='Subcube index')
+    parser.add_argument('-d', '--datacube', dest='datacube', help='Data cube to process.')
+    parser.add_argument('-c', '--coord', dest='coord_file', help='File with edge coordinates of subcubes')
+    args = parser.parse_args()
+    return args
 
-coord_subcubes = np.loadtxt('resources/coord_subcubes.csv', skiprows=1, delimiter=',')
-#print(coord_subcubes)
+def split_subcube(infile, coord_subcubes, idx):
+    print(f'Now exporting item {idx}')
+    print(coord_subcubes[idx])
+    c = coord_subcubes[idx]
+    
+    cube = SpectralCube.read(infile)
+    sub_cube = cube.subcube(xlo=c[0]*u.deg, xhi=c[2]*u.deg,
+                            ylo=c[1]*u.deg, yhi=c[3]*u.deg)
+    #sub_cube.write(f'resources/subcubes/subcube_{idx:02d}.fits')
+    sub_cube.write(f'resources/subcubes/subcube_{idx}.fits')
 
-print(f'Now exporting item {idx}')
-print(coord_subcubes[idx])
-c = coord_subcubes[idx]
+def main():
+    args = get_args()
+    idx = int(args.idx)
+    infile = args.datacube
+    coord_subcubes = np.loadtxt(args.coord_file, skiprows=1, delimiter=',')
+    split_subcube(infile, coord_subcubes, idx)
 
-cube = SpectralCube.read(infile)
-sub_cube = cube.subcube(xlo=c[0]*u.deg, xhi=c[2]*u.deg,
-                        ylo=c[1]*u.deg, yhi=c[3]*u.deg)
 
-#sub_cube.write(f'resources/subcubes/subcube_{idx:02d}.fits')
-sub_cube.write(f'resources/subcubes/subcube_{idx}.fits')
+if __name__ == '__main__':
+    main()
+
+
 
