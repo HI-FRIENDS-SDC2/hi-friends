@@ -1,0 +1,11 @@
+name: xmatch_catalogs
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - ipython
+  - aplpy
+  - astropy
+  - astroquery
+  - numpy
+  - matplotlib

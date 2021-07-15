@@ -140,7 +140,7 @@ def process_catalog(raw_cat, fitsfile):
 
     # Construct the output catalog
     processed_cat = pd.DataFrame()
-    processed_cat['id'] = raw_cat['id']
+    processed_cat['id_subcube'] = raw_cat['id']
     processed_cat['ra'] = ra_deg
     processed_cat['dec'] = dec_deg
     processed_cat['hi_size'] = hi_size
@@ -156,9 +156,11 @@ def process_catalog(raw_cat, fitsfile):
          # we need to clarify if what sofia gives is the central freq
     processed_cat['pa'] = raw_cat['kin_pa']  # we need to clarify if Sofia kinematic angle agrees with their P.A.
     processed_cat['i'] = inclination
+    processed_cat['rms'] = raw_cat['rms']
+    processed_cat['subcube'] = os.path.basename(fitsfile).split('_')[1].split('.fits')[0]
     processed_cat.reset_index(drop=True, inplace=True)
     # This is just to set the right order of the output columns
-    processed_cat = processed_cat[['id', 'ra', 'dec', 'hi_size', 'line_flux_integral', 'central_freq', 'pa', 'i', 'w20']]
+    processed_cat = processed_cat[['id_subcube', 'ra', 'dec', 'hi_size', 'line_flux_integral', 'central_freq', 'pa', 'i', 'w20', 'rms', 'subcube']]
     processed_cat['central_freq'] = processed_cat['central_freq'].map('{:.1f}'.format)
     return processed_cat
 
