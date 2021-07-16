@@ -47,9 +47,9 @@ def pix2coord(wcs, x, y):
     #print(coord)
     return coord[0].ra.deg, coord[0].dec.deg
 
-def compute_inclination(bmaj, bmin):
-    # returns an angle in degrees
-    return np.arctan2(bmin, bmaj)*180./np.pi
+def compute_inclination(bmaj, bmin, q=0.2):
+    cosi = np.sqrt(((bmin/bmaj)**2 - q**2)/(1 - q**2))
+    return np.degrees(np.arccos(cosi))
 
 def convert_units(raw_cat, fitsfile):
     f = fits.open(fitsfile)
