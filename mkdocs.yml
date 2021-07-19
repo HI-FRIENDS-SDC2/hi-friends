@@ -1,0 +1,27 @@
+site_name: HI-FRIENDS SDC2
+site_description: 'Documentation to describe the solution by HI-FRIENDS solution to the SDC2'
+site_author: 'Laura Darriba'
+repo_url: 
+
+nav:
+    - Home: index.md
+    - Participants: participants.md
+    - Methodology: methodology.md
+    - Software: sotfware.md
+    - Code standards: code.md
+    - Results: results.md
+    - Reproducibility: reproducibility.md
+    - Acknowledgments: acknowledgments.md
+
+theme:
+    name: readthedocs
+    highlightjs: true
+
+markdown_extensions:
+  - toc:
+      permalink: True
+  - admonition
+
+extra_javascript:
+  - 'javascripts/extra.js'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
