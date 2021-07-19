@@ -154,6 +154,7 @@ def process_catalog(raw_cat, fitsfile):
         processed_cat['central_freq'] = frequency_to_vel(raw_cat['v_app'],invert=True)
         processed_cat['w20'] = raw_cat['w20']*pix2freq
          # we need to clarify if what sofia gives is the central freq
+    processed_cat['w20'] *= 1e-3 # To convert from m/s to km/s
     processed_cat['pa'] = raw_cat['kin_pa']  # we need to clarify if Sofia kinematic angle agrees with their P.A.
     processed_cat['i'] = inclination
     processed_cat['rms'] = raw_cat['rms']

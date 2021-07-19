@@ -5,11 +5,11 @@ IDX = config['subcube_id']
 include: "rules/chunk_data.smk"
 include: "rules/run_sofia.smk"
 include: "rules/concatenate_catalogs.smk"
-#include: "rules/visualize_products.smk"
+include: "rules/visualize_products.smk"
 
 
 rule final_catalog:
     input:
-        "results/final_catalog.csv"#,
-	#"results/plots/plot1.png"
+        "results/plots/plot1.png",
+        "results/final_catalog.csv"
 
