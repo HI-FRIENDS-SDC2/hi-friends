@@ -1,0 +1,16 @@
+name: plots
+channels:
+ - conda-forge
+ - defaults
+dependencies:
+  - ipython
+  - jupyter
+  - matplotlib
+  - numpy
+  - pandas
+  - scipy
+  - seaborn
+  - astropy
+  - astroquery
+  - spectral-cube
+

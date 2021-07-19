@@ -1,0 +1,24 @@
+# General
+threads: 31
+
+# Cube selection
+incube: '/mnt/scratch/sdc2/data/evaluation/sky_eval.fits'
+#incube: '/mnt/scratch/sdc2/data/development/sky_dev_v2.fits'
+#incube: '/mnt/scratch/sdc2/data/development_large/sky_ldev_v2.fits'
+#incube: '/mnt/sdc2-datacube/sky_full_v2.fits'
+
+# Splitting
+#subcube_id: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
+#[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+subcube_id: [10,11]
+coord_file: results/coord_subcubes.csv
+grid_plot: results/grid.png
+num_subcubes: 36
+pixel_overlap: 40
+#num_subcubes: 4
+#pixel_overlap: 6
+
+# Sofia
+sofia_param: "config/sofia_01.par"
+
+

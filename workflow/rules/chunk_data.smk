@@ -14,16 +14,16 @@ rule define_chunks:
     shell:
         "python workflow/scripts/define_chunks.py -d {params.incube} -g {params.grid_plot} -n {params.num_subcubes} -o {params.pixel_overlap} | tee {log}"
 
-
 rule split_subcube:
     input:
         "results/coord_subcubes.csv"
     output:
-        "results/subcubes/subcube_{idx}.fits"
+        #temp("results/subcubes/subcube_{idx}.fits")
+        "interim/subcubes/subcube_{idx}.fits"
     log:
         "results/logs/split_subcube/subcube_{idx}.log"
-    threads:
-        config['threads']
+    resources:
+        bigfile=1
     conda:
         "../envs/chunk_data.yml"
     params:

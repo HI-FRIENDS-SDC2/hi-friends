@@ -8,11 +8,8 @@ rule concatenate_catalogs:
     log:
         "results/logs/concatenate/concatenate_catalogs.log"
     run:
-#        "cat {input} > {output} | tee {log}"
         shell("awk 'FNR>1' {input} > {output} | tee {log}")
-	#shell("sed -i '1 i\id_subcube 'ra dec hi_size line_flux_integral central_freq pa i w20 rms subcube'")
 	shell("sed -i '1i id_subcube ra dec hi_size line_flux_integral central_freq pa i w20 rms subcube' {output}")
-#        "awk 'FNR!=NR && FNR==1 {next} 1' {{input[0]}} | tee {log}"
 
 
 rule eliminate_duplicates:

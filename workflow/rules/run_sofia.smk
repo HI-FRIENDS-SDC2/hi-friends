@@ -1,6 +1,6 @@
 rule run_sofia:
     input:
-        "results/subcubes/subcube_{idx}.fits"
+        "interim/subcubes/subcube_{idx}.fits"
     output:
         "results/sofia/{idx}/subcube_{idx}_cat.txt"
     log:
@@ -14,7 +14,7 @@ rule run_sofia:
     shell:
         "python workflow/scripts/run_sofia.py --parfile {params.sofia_param} --outname {wildcards.idx} --datacube {input} -r results/sofia | tee {log}"
 
-checkpoint sofia2cat:
+rule sofia2cat:
     input:
         "results/sofia/{idx}/subcube_{idx}_cat.txt"
     output:
