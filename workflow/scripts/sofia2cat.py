@@ -109,7 +109,7 @@ def convert_frequency_axis(filename, outname, velocity_req = 'radio'):
     elif velocity_req == 'relativistic':
         # This should always only ever be used for cubes with small velocity range
         crval_vel = frequency_to_vel(crval)
-        freq_step = float(hdr['CDELT3'])
+        freqstep = float(hdr['CDELT3'])
         central_two = frequency_to_vel(crval+freqstep)
         lower_one = frequency_to_vel(crval-(naxis_len/2.)*freqstep)
         lower_two = frequency_to_vel(crval-(naxis_len/2.+1)*freqstep)
@@ -133,7 +133,7 @@ def convert_frequency_axis(filename, outname, velocity_req = 'radio'):
 
 def process_catalog(raw_cat, fitsfile):
     # Unit conversion
-    ra_deg, dec_deg, pix2arcsec,pix2vel = convert_units(raw_cat, fitsfile)
+    ra_deg, dec_deg, pix2arcsec,pix2freq = convert_units(raw_cat, fitsfile)
     hi_size = raw_cat['ell_maj']*pix2arcsec
     # Estimate inclination based on fitted ellipsoid, assuming the galaxy is intrinsically circular
     inclination = compute_inclination(raw_cat['ell_maj'], raw_cat['ell_min'])
@@ -148,11 +148,11 @@ def process_catalog(raw_cat, fitsfile):
     if 'freq' in raw_cat:
         processed_cat['central_freq'] =  raw_cat['freq']
         #processed_cat['central_velocity'] = frequency_to_vel(raw_cat['freq'])
-        processed_cat['w20'] = frequency_to_vel(raw_cat['freq']-raw_cat['w20']/2.*pix2vel)-frequency_to_vel(raw_cat['freq']+raw_cat['w20']/2.*pix2vel) # we need to clarify if the units and the definition is the same
+        processed_cat['w20'] = frequency_to_vel(raw_cat['freq']-raw_cat['w20']/2.*pix2freq)-frequency_to_vel(raw_cat['freq']+raw_cat['w20']/2.*pix2freq) # we need to clarify if the units and the definition is the same
     else:
         #processed_cat['central_velocity'] =  raw_cat['v_app']
         processed_cat['central_freq'] = frequency_to_vel(raw_cat['v_app'],invert=True)
-        processed_cat['w20'] = raw_cat['w20']*pix2vel
+        processed_cat['w20'] = raw_cat['w20']*pix2freq
          # we need to clarify if what sofia gives is the central freq
     processed_cat['pa'] = raw_cat['kin_pa']  # we need to clarify if Sofia kinematic angle agrees with their P.A.
     processed_cat['i'] = inclination
