@@ -31,6 +31,7 @@ def main():
     idx = int(args.idx)
     infile = args.datacube
     coord_subcubes = np.loadtxt(args.coord_file, skiprows=1, delimiter=',')
+    coord_subcubes = np.atleast_2d(coord_subcubes)
     split_subcube(infile, coord_subcubes, idx)
 
 

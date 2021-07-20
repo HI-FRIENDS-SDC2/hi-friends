@@ -151,7 +151,12 @@ def process_catalog(raw_cat, fitsfile):
         processed_cat['w20'] = frequency_to_vel(raw_cat['freq']-raw_cat['w20']/2.*pix2freq)-frequency_to_vel(raw_cat['freq']+raw_cat['w20']/2.*pix2freq) # we need to clarify if the units and the definition is the same
     else:
         #processed_cat['central_velocity'] =  raw_cat['v_app']
-        processed_cat['central_freq'] = frequency_to_vel(raw_cat['v_app'],invert=True)
+        if 'v_app' in raw_cat.columns:
+            processed_cat['central_freq'] = frequency_to_vel(raw_cat['v_app'],invert=True)
+        elif 'freq' in raw_cat.columns:
+            processed_cat['central_freq'] = raw_cat['freq']
+        elif 'v_opt' in raw_cat.columns:  # This case should not be included for production, just to test the minimal cube
+            processed_cat['central_freq'] = frequency_to_vel(raw_cat['v_opt'],invert=True)
         processed_cat['w20'] = raw_cat['w20']*pix2freq
          # we need to clarify if what sofia gives is the central freq
     processed_cat['w20'] *= 1e-3 # To convert from m/s to km/s

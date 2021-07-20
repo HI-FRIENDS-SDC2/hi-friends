@@ -1,18 +1,20 @@
 # General
-threads: 31
+threads: 16
 
 # Cube selection
 #incube: '/mnt/scratch/sdc2/data/evaluation/sky_eval.fits'
 #incube: '/mnt/scratch/sdc2/data/development/sky_dev_v2.fits'
-incube: '/mnt/scratch/sdc2/data/development_large/sky_ldev_v2.fits'
-#incube: '/mnt/sdc2-datacube/sky_full_v2.fits'
+#incube: '/mnt/scratch/sdc2/data/development_large/sky_ldev_v2.fits'
+incube: '/mnt/sdc2-datacube/sky_full_v2.fits'
 
 # Splitting
-#subcube_id: [0,12,2,7]#[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
-subcube_id: [0,1,2,3]
+#subcube_id: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+#subcube_id: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
+subcube_id: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48]
+#subcube_id: [9, 25, 4, 14, 41, 10, 30, 40, 20, 35, 24, 19, 46, 47, 31, 21, 36, 26, 7, 2]
 coord_file: results/coord_subcubes.csv
 grid_plot: results/grid.png
-num_subcubes: 4
+num_subcubes: 49
 pixel_overlap: 40
 #num_subcubes: 4
 #pixel_overlap: 6

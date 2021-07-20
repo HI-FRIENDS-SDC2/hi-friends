@@ -1,0 +1,17 @@
+# General
+threads: 2
+
+# Cube selection
+incube: '/mnt/scratch/sdc2/data/minimal/sofia_test_datacube.fits'
+
+# Splitting
+subcube_id: [0]
+coord_file: results/coord_subcubes.csv
+grid_plot: results/grid.png
+num_subcubes: 4
+pixel_overlap: 20
+
+# Sofia
+sofia_param: "config/dev12.par"
+
+
