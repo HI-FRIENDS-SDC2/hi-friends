@@ -1,7 +1,7 @@
 rule define_chunks:
     input:
     output:
-        "results/coord_subcubes.csv"
+        "results/catalogs/coord_subcubes.csv"
     conda:
         "../envs/chunk_data.yml"
     log:
@@ -10,15 +10,16 @@ rule define_chunks:
         incube = config['incube'],
         grid_plot = config['grid_plot'],
         num_subcubes = config['num_subcubes'],
-        pixel_overlap = config['pixel_overlap']
+        pixel_overlap = config['pixel_overlap'],
+        coord_file = config['coord_file']
     shell:
-        "python workflow/scripts/define_chunks.py -d {params.incube} -g {params.grid_plot} -n {params.num_subcubes} -o {params.pixel_overlap} | tee {log}"
+        "python workflow/scripts/define_chunks.py -d {params.incube} -g {params.grid_plot} -n {params.num_subcubes} -o {params.pixel_overlap} -c {params.coord_file} | tee {log}"
 
 rule split_subcube:
     input:
-        "results/coord_subcubes.csv"
+        "results/catalogs/coord_subcubes.csv"
     output:
-        #temp("results/subcubes/subcube_{idx}.fits")
+        #temp("interim/subcubes/subcube_{idx}.fits")
         "interim/subcubes/subcube_{idx}.fits"
     log:
         "results/logs/split_subcube/subcube_{idx}.log"

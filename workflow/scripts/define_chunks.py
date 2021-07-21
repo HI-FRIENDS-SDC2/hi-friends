@@ -37,6 +37,8 @@ def get_args():
     parser.add_argument('-o', '--overlap', dest='pixel_overlap', \
                         help='Number of pixels to extend the cube in each \
                         direction.')
+    parser.add_argument('-c', '--coord', dest='coord_file',
+            help='File with edge coordinates of subcubes')
     args = parser.parse_args()
     return args
 
@@ -130,8 +132,8 @@ def plot_border(wcs, n_pix):
 
 
 
-def write_subcubes(steps, wcs, overlap, subcube_size_pix):
-    '''Return coordinates of subcubes. Save file coord_subcubes.csv in the results
+def write_subcubes(steps, wcs, overlap, subcube_size_pix, coord_file):
+    '''Return coordinates of subcubes. Save file `coord_file` in the results
     folder containing the coordinates of the subcubes
     Parameters
     ----------
@@ -153,7 +155,8 @@ def write_subcubes(steps, wcs, overlap, subcube_size_pix):
     '''
     ## Find subcubes coordinates and write them
     coord_subcubes = define_subcubes(steps, wcs, overlap, subcube_size_pix)
-    np.savetxt("results/coord_subcubes.csv", coord_subcubes, delimiter=",",
+    print(coord_file)
+    np.savetxt(coord_file, coord_subcubes, delimiter=",",
                header="xlo,ylo,xhi,yhi",
                fmt="%f", comments='')
     return coord_subcubes
@@ -194,6 +197,7 @@ def main():
     args = get_args()
     infile = args.datacube
     grid_plot = args.grid_plot
+    coord_file = args.coord_file
     num_subcubes = int(args.num_subcubes)
     pixel_overlap = int(args.pixel_overlap)
 
@@ -212,7 +216,8 @@ def main():
     print(f"Number of subcubes = {num_subcubes}")
     print(f"steps = {steps}")
 
-    coord_subcubes = write_subcubes(steps, wcs, overlap, subcube_size_pix)
+    coord_subcubes = write_subcubes(steps, wcs, overlap, subcube_size_pix,
+            coord_file=coord_file)
     plot_grid(wcs, coord_subcubes, grid_plot, n_pix)
 
 if __name__ == '__main__':
