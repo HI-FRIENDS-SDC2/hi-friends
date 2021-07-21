@@ -11,3 +11,5 @@ dependencies:
   - pygments
   - pygraphviz
   - python=3.*
+  - python-wget
+  - jupyter-lab
