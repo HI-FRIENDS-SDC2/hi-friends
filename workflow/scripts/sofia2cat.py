@@ -146,13 +146,13 @@ def process_catalog(raw_cat, fitsfile):
     processed_cat['hi_size'] = hi_size
     processed_cat['line_flux_integral'] = convert_flux(raw_cat['f_sum'],fitsfile)  # Now converted to Jy*km/s verifcation for developments needed
     if 'freq' in raw_cat:
-        processed_cat['central_freq'] =  raw_cat['freq']
+        processed_cat['central_freq'] = raw_cat['freq']
         #processed_cat['central_velocity'] = frequency_to_vel(raw_cat['freq'])
-        processed_cat['w20'] = frequency_to_vel(raw_cat['freq']-raw_cat['w20']/2.*pix2freq)-frequency_to_vel(raw_cat['freq']+raw_cat['w20']/2.*pix2freq) # we need to clarify if the units and the definition is the same
+        processed_cat['w20'] = 1e-3 * frequency_to_vel(raw_cat['freq']-raw_cat['w20']/2.*pix2freq)-frequency_to_vel(raw_cat['freq']+raw_cat['w20']/2.*pix2freq) # we need to clarify if the units and the definition is the same
     else:
         #processed_cat['central_velocity'] =  raw_cat['v_app']
         processed_cat['central_freq'] = frequency_to_vel(raw_cat['v_app'],invert=True)
-        processed_cat['w20'] = raw_cat['w20']*pix2freq
+        processed_cat['w20'] = 1e-3 * raw_cat['w20']*pix2freq
          # we need to clarify if what sofia gives is the central freq
     processed_cat['pa'] = raw_cat['kin_pa']  # we need to clarify if Sofia kinematic angle agrees with their P.A.
     processed_cat['i'] = inclination
