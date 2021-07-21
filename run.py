@@ -47,6 +47,7 @@ def main():
     args = get_args()
     if args.check:
         run_check()
+        rmdir('tmp')
         exit(0)
     # Normal execution
     if args.cpus == 0:

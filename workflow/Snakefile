@@ -10,6 +10,6 @@ include: "rules/visualize_products.smk"
 
 rule final_catalog:
     input:
-        "results/plots/plot1.png",
-        "results/final_catalog.csv"
+        "results/plots/output_params_distribution.png",
+        "results/catalogs/final_catalog.csv"
 

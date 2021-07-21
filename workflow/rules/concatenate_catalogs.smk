@@ -4,7 +4,7 @@ rule concatenate_catalogs:
         expand("results/sofia/{idx}/subcube_{idx}_final_catalog.csv", idx=IDX, allow_missing=True)
         #aggregate_input
     output:
-        "results/catalog_w_duplicates.csv"
+        "results/catalogs/catalog_w_duplicates.csv"
     log:
         "results/logs/concatenate/concatenate_catalogs.log"
     run:
@@ -14,9 +14,9 @@ rule concatenate_catalogs:
 
 rule eliminate_duplicates:
     input:
-        "results/catalog_w_duplicates.csv"
+        "results/catalogs/catalog_w_duplicates.csv"
     output:
-        "results/final_catalog.csv"
+        "results/catalogs/final_catalog.csv"
     conda:
         "../envs/xmatch_catalogs.yml"
     log:

@@ -1,9 +1,9 @@
 
 rule visualize:
     input:
-        "results/final_catalog.csv"
+        "results/catalogs/final_catalog.csv"
     output:
-        "results/plots/plot1.png"
+        "results/plots/output_params_distribution.png"
     log:
         "results/logs/visualize/visualize.log",
         # optional path to the processed notebook
