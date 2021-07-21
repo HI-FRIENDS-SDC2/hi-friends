@@ -1,7 +1,9 @@
 import os
+import shutil
 import argparse
 import wget
 import psutil
+
 
 def get_args():
     '''This function parses and returns arguments passed in'''
@@ -13,13 +15,33 @@ def get_args():
     args = parser.parse_args()
     return args
 
+def rmdir(pathdir, message='Deleted:'):
+    if os.path.exists(pathdir):
+        try:
+            shutil.rmtree(pathdir)
+            #logger.info('{0} {1}'.format(message, pathdir))
+        except:
+            #logger.debug('Could not delete: {0} {1}'.format(message, pathdir))
+            pass
+
+def rmfile(pathdir, message='Deleted:'):
+    if os.path.exists(pathdir):
+        try:
+            os.remove(pathdir)
+            #logger.info('{0} {1}'.format(message, pathdir))
+        except:
+            #logger.debug('Could not delete: {0} {1}'.format(message, pathdir))
+            pass
+
 def run_check():
+    url = 'https://github.com/SoFiA-Admin/SoFiA-2/wiki/documents/sofia_test_datacube.tar.gz'
     if not os.path.isdir('interim'):
         os.mkdir('interim')
-
-    url = 'https://github.com/SoFiA-Admin/SoFiA-2/wiki/documents/sofia_test_datacube.tar.gz'
-    wget.download(url, 'interim/')
-    os.system("snakemake -j1 --use-conda --conda-frontend mamba --default-resources tmpdir=tmp  --resources bigfile=1 --config incube='/mnt/scratch/sdc2/data/minimal/sofia_test_datacube.fits' subcube_id=[0,1,2,3] num_subcubes=4 pixel_overlap=0")
+    if not os.path.isfile('interim/sofia_test_datacube.fits'):
+        wget.download(url, 'interim/')
+        os.system('cd interim && tar xvfz sofia_test_datacube.tar.gz; cd ..')
+    # Execute pipeline on test dataset
+    os.system("snakemake -j8 --use-conda --conda-frontend mamba --default-resources tmpdir=tmp  --resources bigfile=1 --config incube='interim/sofia_test_datacube.fits' subcube_id=[0,1,2,3] num_subcubes=4 pixel_overlap=0")
 
 def main():
     args = get_args()
@@ -32,6 +54,8 @@ def main():
     else:
         cpus = args.cpus
     os.system(f'snakemake -j{cpus} --use-conda --conda-frontend mamba --default-resources tmpdir=tmp  --resources bigfile=1')
+    rmdir('tmp')
+    
 
 if __name__ == '__main__':
     main()

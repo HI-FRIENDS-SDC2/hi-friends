@@ -12,4 +12,4 @@ dependencies:
   - pygraphviz
   - python=3.*
   - python-wget
-  - jupyter-lab
+  - jupyterlab
