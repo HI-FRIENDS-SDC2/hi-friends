@@ -204,7 +204,7 @@ def main():
 
     # Define subcube properties
     subcube_size_pix = int(n_pix/np.sqrt(num_subcubes))
-    steps = np.arange(0, n_pix, subcube_size_pix)[:-1]
+    steps = np.arange(0, n_pix+1, subcube_size_pix)[:-1]
     overlap = pixel_overlap
     print(f"n_pix = {n_pix}")
     print(f"overlap = {overlap}")
