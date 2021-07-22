@@ -33,6 +33,12 @@ def rmfile(pathdir, message='Deleted:'):
             #logger.debug('Could not delete: {0} {1}'.format(message, pathdir))
             pass
 
+def run_summary():
+    print('Now producing summary plots and report')
+#    os.system("snakemake --rulegraph | dot -Tsvg > images/rulegraph.svg")
+#    os.system("snakemake --dag | dot -Tsvg > images/dag.svg")
+    os.system("snakemake --report results/report.html")
+
 def run_check():
     url = 'https://github.com/SoFiA-Admin/SoFiA-2/wiki/documents/sofia_test_datacube.tar.gz'
     if not os.path.isdir('interim'):
@@ -42,12 +48,13 @@ def run_check():
         os.system('cd interim && tar xvfz sofia_test_datacube.tar.gz; cd ..')
     # Execute pipeline on test dataset
     os.system("snakemake -j8 --use-conda --conda-frontend mamba --default-resources tmpdir=tmp  --resources bigfile=1 --config incube='interim/sofia_test_datacube.fits' subcube_id=[0,1,2,3] num_subcubes=4 pixel_overlap=0")
+    rmdir('tmp')
+    run_summary()
 
 def main():
     args = get_args()
     if args.check:
         run_check()
-        rmdir('tmp')
         exit(0)
     # Normal execution
     if args.cpus == 0:
@@ -56,6 +63,7 @@ def main():
         cpus = args.cpus
     os.system(f'snakemake -j{cpus} --use-conda --conda-frontend mamba --default-resources tmpdir=tmp  --resources bigfile=1')
     rmdir('tmp')
+    run_summary()
     
 
 if __name__ == '__main__':

@@ -1,0 +1,15 @@
+name: snakemake
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - snakemake-minimal
+  - gitpython
+  - jinja2
+  - networkx
+  - pygments
+  - pygraphviz
+  - python=3.*
+  - python-wget
+  - jupyterlab

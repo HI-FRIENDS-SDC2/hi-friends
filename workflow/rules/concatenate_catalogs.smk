@@ -12,7 +12,7 @@ rule concatenate_catalogs:
 	shell("sed -i '1i id_subcube ra dec hi_size line_flux_integral central_freq pa i w20 rms subcube' {output}")
 
 
-rule eliminate_duplicates:
+rule final_catalog:
     input:
         "results/catalogs/catalog_w_duplicates.csv"
     output:

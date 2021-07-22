@@ -6,10 +6,12 @@ include: "rules/chunk_data.smk"
 include: "rules/run_sofia.smk"
 include: "rules/concatenate_catalogs.smk"
 include: "rules/visualize_products.smk"
+include: "rules/summary.smk"
 
 
-rule final_catalog:
+rule all:
     input:
+        "results/catalogs/final_catalog.csv",
         "results/plots/output_params_distribution.png",
-        "results/catalogs/final_catalog.csv"
-
+        "summary/dag.svg",
+        "summary/rulegraph.svg"
