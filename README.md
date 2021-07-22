@@ -1,8 +1,53 @@
-# SKA Data Challenge 2 participation of the team HI-FRIENDS
 
-# Installation
+# HI-FRIENDS team: participation in the SKA Data Challenge 2
 
-First you need to install conda, get the pipeline, and install snakemake. 
+This repository contains the workflow used to find and characterize the HI sources in the data cube of the [SKA Data Challenge 2](https://sdc2.astronomers.skatelescope.org/). This is developed by the HI-FRIENDS team. The execution of the workflow was conducted in the [SP-SRC](https://spsrc-user-docs.readthedocs.io/en/latest/) cluster at the [IAA-CSIC](https://www.iaa.csic.es/en/).
+
+
+
+
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+
+  
+## Documentation
+
+[Documentation](https://linktodocumentation)
+
+  
+## Requirements
+
+The requirements of the workflow are self-contained, and will be retrieved and installed during execution using `conda`. To run the pipeline you need to have [snakemake](https://snakemake.readthedocs.io/en/stable/) installed. This can be obtained from the `environment.yml` file in the repository as explained in the next Section. The workflow uses the following packages:
+  - aplpy
+  - astropy
+  - astroquery
+  - dask
+  - gitpython
+  - ipython
+  - jinja2
+  - jupyter
+  - jupyterlab
+  - matplotlib
+  - networkx
+  - numpy
+  - pandas
+  - pip
+  - pygments
+  - pygraphviz
+  - python
+  - python-wget
+  - pyyaml
+  - scipy
+  - seaborn
+  - snakemake-minimal
+  - sofia-2
+  - spectral-cube
+  - wget
+
+## Installation
+
+To deploy this project, first you need to install conda, get the pipeline, and install snakemake. 
+
+
 1. Get conda
 
 You don't need to run it if you already have a working `conda` installation. If you don't have `conda` follow the steps below to install it in the local directory `conda-install`.
@@ -23,7 +68,7 @@ mamba env create -f environment.yml
 conda activate snakemake
 ```
 
-3. Execute the pipeline
+# Workflow execution
 
 Follow these commands to run the pipeline on a small dataset to verify everything works:
 ```bash
@@ -36,3 +81,11 @@ To execute the pipeline on your own dataset, first remove the directories `resul
 ```bash
 python run.py
 ```
+
+## Related
+
+Here are some related projects
+
+- [Sofia-2](https://github.com/SoFiA-Admin/SoFiA-2)
+- [SKA Data Challenge 2](https://sdc2.astronomers.skatelescope.org/)
+- [SKA](https://sdc2.astronomers.skatelescope.org/)
