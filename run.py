@@ -37,7 +37,7 @@ def run_summary():
     print('Now producing summary plots and report')
 #    os.system("snakemake --rulegraph | dot -Tsvg > images/rulegraph.svg")
 #    os.system("snakemake --dag | dot -Tsvg > images/dag.svg")
-    os.system("snakemake --report results/report.html")
+    os.system("snakemake --report summary/report.html")
 
 def run_check():
     url = 'https://github.com/SoFiA-Admin/SoFiA-2/wiki/documents/sofia_test_datacube.tar.gz'

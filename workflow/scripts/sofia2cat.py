@@ -34,11 +34,7 @@ def sofia2cat(catalog):
     raw_cat = pd.read_csv(catalog, delim_whitespace=True, header=None, names=head, comment='#')
     raw_cat.sort_values(by='f_sum', ascending=False, inplace=True)
     raw_cat_filtered = raw_cat[raw_cat['kin_pa']>0]
-    print('Sofia raw catalog filtered:')
-    if 'freq' in raw_cat_filtered:
-        print(raw_cat_filtered[['x', 'y', 'ell_maj', 'ell_min', 'f_sum', 'freq', 'kin_pa', 'w20']])
-    elif 'v_app' in raw_cat_filtered:
-        print(raw_cat_filtered[['x', 'y', 'ell_maj', 'ell_min', 'f_sum', 'v_app', 'kin_pa', 'w20']])
+    print('Producing sofia raw catalog filtered by kin_pa > 0:')
     return raw_cat_filtered
 
 def pix2coord(wcs, x, y):
@@ -152,10 +148,13 @@ def process_catalog(raw_cat, fitsfile):
     else:
         #processed_cat['central_velocity'] =  raw_cat['v_app']
         if 'v_app' in raw_cat.columns:
+            print('Using v_app column')
             processed_cat['central_freq'] = frequency_to_vel(raw_cat['v_app'],invert=True)
         elif 'freq' in raw_cat.columns:
+            print('Using freq column')
             processed_cat['central_freq'] = raw_cat['freq']
         elif 'v_opt' in raw_cat.columns:  # This case should not be included for production, just to test the minimal cube
+            print('WARNING. Using v_opt column. Use only to check the workflow')
             processed_cat['central_freq'] = frequency_to_vel(raw_cat['v_opt'],invert=True)
         processed_cat['w20'] = raw_cat['w20']*pix2freq
          # we need to clarify if what sofia gives is the central freq
