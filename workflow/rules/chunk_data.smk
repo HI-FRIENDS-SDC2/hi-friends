@@ -1,7 +1,8 @@
 rule define_chunks:
     input:
     output:
-        "results/catalogs/coord_subcubes.csv"
+        "results/catalogs/coord_subcubes.csv",
+	"results/plots/subcube_grid.png"
     conda:
         "../envs/chunk_data.yml"
     log:
