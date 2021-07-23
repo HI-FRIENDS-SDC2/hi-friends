@@ -12,12 +12,15 @@ The workflow is managed and executed using [snakemake](https://snakemake.readthe
 ## Workflow structure and products
 
 The following diagram shows the rules executed by the workflow and their dependencies. Each rule is associated with the execution of either a python script, a jupyter notebook or a bash script.
+
 ![rulegraph](docs/figures/rulegraph.svg)
 
 The actual execution of the workflow requires some of the rules to be executed multiple times. In particular each subcube is processed sequentially. The next diagram shows the [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph) of an example execution. The number of parallel jobs is variable, here we show the case of 16 subcubes, although for the full SDC2 cube we may use 36 or 49 subcubes.
+
 ![dag](docs/figures/dag.svg)
 
 Each rule has associated input and output files. The following diagram shows the stage at which the relevant files are 
+
 ![filegraph](docs/figures/filegraph.svg)
 
 ### Workflow file structure
