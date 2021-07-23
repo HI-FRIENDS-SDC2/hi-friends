@@ -12,7 +12,7 @@ The workflow is managed and executed using [snakemake](https://snakemake.readthe
 This is the dependencies between the rules of the workflow:
 ![rulegraph](docs/figures/rulegraph.svg)
 
-And this is the DAG of the execution. The number of parallel jobs required is variable, here we show the case of 4 subcubes, although for the full SDC2 cube we may use 36 or 49 subcubes.
+And this is the DAG of the execution. The number of parallel jobs required is variable, here we show the case of 16 subcubes, although for the full SDC2 cube we may use 36 or 49 subcubes.
 ![dag](docs/figures/dag.svg)
 
 The input and output files can be summarized here:
