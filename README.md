@@ -1,19 +1,28 @@
-
 # HI-FRIENDS team: participation in the SKA Data Challenge 2
 
 This repository contains the workflow used to find and characterize the HI sources in the data cube of the [SKA Data Challenge 2](https://sdc2.astronomers.skatelescope.org/). This is developed by the HI-FRIENDS team. The execution of the workflow was conducted in the [SP-SRC](https://spsrc-user-docs.readthedocs.io/en/latest/) cluster at the [IAA-CSIC](https://www.iaa.csic.es/en/).
 
 
-
-
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 
-  
+## Summary
+
+The workflow is managed and executed using [snakemake](https://snakemake.readthedocs.io/en/stable/) workflow management system. It uses `spectral-cube` based on `dask` parallelization tool and `astropy` suite to divide the large cube in smaller pieces. On each of the subcubes, we execute [Sofia-2](https://github.com/SoFiA-Admin/SoFiA-2) for masking the subcubes, find sources and characterize their properties. Finally, the individual catalogs are cleaned, concatenated into a single catalog, and duplicates from the overlapping regions are eliminated. Some diagnostic plots are produced using Jupyter notebook.
+
+This is the dependencies between the rules of the workflow:
+![rulegraph](docs/figures/rulegraph.svg)
+
+And this is the DAG of the execution. The number of parallel jobs required is variable, here we show the case of 4 subcubes, although for the full SDC2 cube we may use 36 or 49 subcubes.
+![dag](docs/figures/dag.svg)
+
+The input and output files can be summarized here:
+![filegraph](docs/figures/filegraph.svg)
+ 
 ## Documentation
 
 [Documentation](https://linktodocumentation)
 
-  
+
 ## Requirements
 
 The requirements of the workflow are self-contained, and will be retrieved and installed during execution using `conda`. To run the pipeline you need to have [snakemake](https://snakemake.readthedocs.io/en/stable/) installed. This can be obtained from the `environment.yml` file in the repository as explained in the next Section. The workflow uses the following packages:
