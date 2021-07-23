@@ -3,14 +3,14 @@ channels:
  - conda-forge
  - defaults
 dependencies:
-  - ipython
-  - jupyter
-  - matplotlib
-  - numpy
-  - pandas
-  - scipy
-  - seaborn
-  - astropy
-  - astroquery
-  - spectral-cube
+  - astroquery=0.4.3
+  - dask=2021.3.1
+  - ipython=7.22.0
+  - matplotlib=3.3.4
+  - msgpack-python=1.0.2
+  - numpy=1.20.3
+  - pandas=1.2.5
+  - pip=21.0.1
+  - python=3.9.6
+  - spectral-cube=0.5.0
 
