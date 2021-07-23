@@ -13,7 +13,7 @@ rule all:
     input:
         "results/catalogs/final_catalog.csv",
         "results/plots/output_params_distribution.png",
-	"results/notebooks/sdc2_hi-friends.ipynb",
-        "summary/dag.svg",
-        "summary/rulegraph.svg",
-	"summary/filegraph.svg"
+        "results/notebooks/sdc2_hi-friends.ipynb"
+#        "summary/dag.svg",
+#        "summary/rulegraph.svg",
+#        "summary/filegraph.svg"

@@ -33,11 +33,12 @@ def rmfile(pathdir, message='Deleted:'):
             #logger.debug('Could not delete: {0} {1}'.format(message, pathdir))
             pass
 
-def run_summary():
+def run_summary(command):
     print('Now producing summary plots and report')
-#    os.system("snakemake --rulegraph | dot -Tsvg > images/rulegraph.svg")
-#    os.system("snakemake --dag | dot -Tsvg > images/dag.svg")
-    os.system("snakemake --report summary/report.html")
+    os.system(command + " --report summary/report.html")
+    os.system(command + " --rulegraph --forceall | dot -Tsvg > summary/rulegraph.svg")
+    os.system(command + " --dag --forceall | dot -Tsvg > summary/dag.svg")
+    os.system(command + " --filegraph --forceall | dot -Tsvg > summary/filegraph.svg")
 
 def run_check():
     url = 'https://github.com/SoFiA-Admin/SoFiA-2/wiki/documents/sofia_test_datacube.tar.gz'
@@ -47,24 +48,27 @@ def run_check():
         wget.download(url, 'interim/')
         os.system('cd interim && tar xvfz sofia_test_datacube.tar.gz; cd ..')
     # Execute pipeline on test dataset
-    os.system("snakemake -j8 --use-conda --conda-frontend mamba --default-resources tmpdir=tmp  --resources bigfile=1 --config incube='interim/sofia_test_datacube.fits' subcube_id=[0,1,2,3] num_subcubes=4 pixel_overlap=0")
+    command = "snakemake -j8 --use-conda --conda-frontend mamba --default-resources tmpdir=tmp  --resources bigfile=1 --config incube='interim/sofia_test_datacube.fits' subcube_id=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] num_subcubes=4 pixel_overlap=0"
+    run_command(command)
+
+def run_command(command):
+    print(command)
+    os.system(command)
     rmdir('tmp')
-    run_summary()
+    run_summary(command)
 
 def main():
     args = get_args()
     if args.check:
         run_check()
-        exit(0)
-    # Normal execution
-    if args.cpus == 0:
-        cpus = psutil.cpu_count()
-    else:
-        cpus = args.cpus
-    os.system(f'snakemake -j{cpus} --use-conda --conda-frontend mamba --default-resources tmpdir=tmp  --resources bigfile=1')
-    rmdir('tmp')
-    run_summary()
-    
+    elif not args.check:
+        # Normal execution
+        if args.cpus == 0:
+            cpus = psutil.cpu_count()
+        else:
+            cpus = args.cpus
+        command = f'snakemake -j{cpus} --use-conda --conda-frontend mamba --default-resources tmpdir=tmp  --resources bigfile=1'
+        run_command(command) 
 
 if __name__ == '__main__':
     main()
