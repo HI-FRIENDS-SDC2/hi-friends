@@ -1,4 +1,3 @@
-# Software
 
 In this section we provide a description of the software used and where is stored, in particular we peovide a high-level description of what the software is for, high-level description of what the software does, installation instructions with dependencies list ans examples of how to run the workflow.   
 
