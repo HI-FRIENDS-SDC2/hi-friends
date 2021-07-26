@@ -1,26 +1,16 @@
 # Software
 
-Here we provide a description of the software used. 
-
-Things to bear in mind 
-
-- High-level description of what/who the software is for 
-- High-level description of what the software does 
-- High-level description of how the software works with step-by-step instructions
-- All dependencies listed 
-- Etc
+In this section we provide a description of the software used and where is stored, in particular we peovide a high-level description of what the software is for, high-level description of what the software does, installation instructions with dependencies list ans examples of how to run the workflow.   
 
 
-
+# Software description and where is stored 
 
 The [HI-FRIENDS github repository](https://github.com/HI-FRIENDS-SDC2/hi-friends) contains the workflow used to find and characterize the HI sources in the data cube of the SKA Data Challenge 2. This is developed by the HI-FRIENDS team. The execution of the workflow was conducted in the SP-SRC cluster at the IAA-CSIC.
 
- 
-## Summary 
-
 The workflow is managed and executed using [snakemake](https://snakemake.readthedocs.io/en/stable/) workflow management system. It uses `spectral-cube` based on `dask` parallelization tool and `astropy` suite to divide the large cube in smaller pieces. On each of the subcubes, we execute [Sofia-2](https://github.com/SoFiA-Admin/SoFiA-2) for masking the subcubes, find sources and characterize their properties. Finally, the individual catalogs are cleaned, concatenated into a single catalog, and duplicates from the overlapping regions are eliminated. Some diagnostic plots are produced using Jupyter notebook.
 
-## Workflow structure and products
+
+# Workflow structure and products
 
 The following diagram shows the rules executed by the workflow and their dependencies. Each rule is associated with the execution of either a python script, a jupyter notebook or a bash script.
 
@@ -34,7 +24,9 @@ Each rule has associated input and output files. The following diagram shows the
 
 ![filegraph](figures/filegraph.svg)
 
-### Workflow file structure
+
+## Workflow file structure
+
 The workflow consists of a master `Snakefile` file (analogous to a Makefile for `make`), a series of conda environments, scripts and notebooks to be executed, and rules to manage the workflow tasks. The file organization of the workflow is the following:
 ```
 workflow/
@@ -61,7 +53,9 @@ workflow/
     └── split_subcube.py
 ```
 
-### Output products
+
+## Output products
+
 All the outputs of the workflow are stored in `results`. This is the first level organization of the directories:
 
 ```
@@ -113,7 +107,8 @@ interim/
     └── subcube_3.fits
 ```
 
-### Snakemake execution and diagrams
+
+## Snakemake execution and diagrams
 
 Additional files summarizing the execution of the workflow and the Snakemake rules are stored in 
 ```
@@ -134,7 +129,8 @@ When clicking in one of the nodes, full provenance is provided:
 Statistics of the time required for each execution:
 ![statistics](figures/snakemake_statistics.png):w
 
-## Requirements
+
+# Dependencies
 
 The requirements of the workflow are self-contained, and they will be retrieved and installed during execution using `conda`. To run the pipeline you need to have [snakemake](https://snakemake.readthedocs.io/en/stable/) installed. This can be obtained from the `environment.yml` file in the repository as explained in the next Section. The workflow uses the following packages:
 
@@ -175,12 +171,13 @@ The requirements of the workflow are self-contained, and they will be retrieved 
 
 It is not recommended to install them individually, because Snakemake will use conda internally to install the different environments included in this repository. This list is just for reference purposes.
 
-## Installation
+
+# Installation
 
 To deploy this project, first you need to install conda, get the pipeline, and install snakemake. 
 
 
-1. Get conda
+## 1. Get conda
 
 You don't need to run it if you already have a working `conda` installation. If you don't have `conda` follow the steps below to install it in the local directory `conda-install`.
 
@@ -191,7 +188,8 @@ You don't need to run it if you already have a working `conda` installation. If 
  conda install mamba --channel conda-forge --yes
 ```
 
-2. Get the pipeline and install snakemake
+
+## 2. Get the pipeline and install snakemake
 
 ```bash
 git clone https://github.com/HI-FRIENDS-SDC2/hi-friends
@@ -199,6 +197,7 @@ cd hi-friends
 mamba env create -f environment.yml
 conda activate snakemake
 ```
+
 
 # Workflow execution
 
@@ -214,7 +213,8 @@ To execute the pipeline on your own dataset, first remove the directories `resul
 python run.py
 ```
 
-## Related
+
+## Related projects
 
 Here are some related projects
 
