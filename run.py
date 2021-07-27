@@ -35,6 +35,8 @@ def rmfile(pathdir, message='Deleted:'):
 
 def run_summary(command):
     print('Now producing summary plots and report')
+    if not os.path.isdir('summary'):
+        os.mkdir('summary')
     os.system(command + " --report summary/report.html")
     os.system(command + " --rulegraph --forceall | dot -Tsvg > summary/rulegraph.svg")
     os.system(command + " --dag --forceall | dot -Tsvg > summary/dag.svg")
