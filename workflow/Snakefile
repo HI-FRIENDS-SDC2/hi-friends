@@ -1,6 +1,9 @@
 configfile: "config/config.yaml"
 
-IDX = config['subcube_id']
+if config['subcube_id'] == 'all':
+    IDX = range(config['num_subcubes'])
+else:
+    IDX = config['subcube_id']
 
 include: "rules/chunk_data.smk"
 include: "rules/run_sofia.smk"
