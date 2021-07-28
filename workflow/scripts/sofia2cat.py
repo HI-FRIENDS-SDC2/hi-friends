@@ -45,6 +45,12 @@ def pix2coord(wcs, x, y):
 
 def compute_inclination(bmaj, bmin, q=0.2):
     cosi = np.sqrt(((bmin/bmaj)**2 - q**2)/(1 - q**2))
+    # From A7) in http://articles.adsabs.harvard.edu/pdf/1992MNRAS.258..334S 
+    p = bmin/bmaj
+    q = 0.65*p - 0.072*p**3.9
+    cosi = np.sqrt(
+            (p**2 - q**2)/(1-q**2)
+            )
     cosi[np.isnan(cosi)] = 0.0
     return np.degrees(np.arccos(cosi))
 
