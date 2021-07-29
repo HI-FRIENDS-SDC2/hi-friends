@@ -50,7 +50,7 @@ def run_check():
         wget.download(url, 'interim/')
         os.system('cd interim && tar xvfz sofia_test_datacube.tar.gz; cd ..')
     # Execute pipeline on test dataset
-    command = "snakemake -j8 --use-conda --conda-frontend mamba --default-resources tmpdir=tmp  --resources bigfile=1 --config incube='interim/sofia_test_datacube.fits' subcube_id=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] num_subcubes=4 pixel_overlap=0"
+    command = "snakemake -j8 --use-conda --conda-frontend mamba --default-resources tmpdir=tmp  --resources bigfile=1 --config incube='interim/sofia_test_datacube.fits' sofia_param='config/dev12.par' subcube_id='all' num_subcubes=4 pixel_overlap=0"
     run_command(command)
 
 def run_command(command):
