@@ -1,0 +1,136 @@
+# List of template parameter settings for SoFiA
+#
+# Note that SoFiA's default parameters are actually hard-coded in the
+# file Parameter.c, and any changes to this file will have no effect.
+# This file can instead be used as a template for setting up your own
+# parameter files.
+
+
+# Global settings
+
+pipeline.verbose           =  true
+pipeline.pedantic          =  false
+pipeline.threads           =  32 # up to 32 now
+
+
+# Input
+
+input.data                 =  interim/subcubes/subcube_0.fits
+input.region               =  
+input.gain                 =  
+input.noise                =  
+input.weights              =  
+input.mask                 =  
+input.invert               =  false
+
+
+# Flagging
+
+flag.region                =  
+flag.catalog               = 
+flag.radius                =  
+flag.auto                  =  false # lets see how good this is
+flag.threshold             =  3.5
+flag.log                   =  true
+
+
+# Continuum subtraction
+
+contsub.enable             =  false # try this
+contsub.order              =  1 # default is 0
+contsub.threshold          =  2.0
+contsub.shift              =  4
+contsub.padding            =  3
+
+
+# Noise scaling
+
+scaleNoise.enable          =  true
+scaleNoise.mode            =  spectral
+scaleNoise.statistic       =  mad
+scaleNoise.fluxRange       =  negative
+scaleNoise.windowXY        =  99
+scaleNoise.windowZ         =  5
+scaleNoise.gridXY          =  0
+scaleNoise.gridZ           =  0
+scaleNoise.interpolate     =  true
+scaleNoise.scfind          =  true
+
+# S+C finder
+
+scfind.enable              =  true
+scfind.kernelsXY           =  0, 4, 8
+scfind.kernelsZ            =  0, 5, 11, 21, 41
+scfind.threshold           =  3.5 
+scfind.replacement         =  2.0
+scfind.statistic           =  mad
+scfind.fluxRange           =  negative
+
+
+# Threshold finder
+
+threshold.enable           =  false 
+threshold.threshold        =  5.0
+threshold.mode             =  relative
+threshold.statistic        =  mad
+threshold.fluxRange        =  negative
+
+
+# Linker
+
+linker.enable              =  true
+linker.radiusXY            =  4
+linker.radiusZ             =  5
+linker.minSizeXY           =  5
+linker.minSizeZ            =  3 # 6 km/s channel
+linker.maxSizeXY           =  0
+linker.maxSizeZ            =  0
+linker.positivity          =  false
+linker.keepNegative        =  false # try this
+
+
+# Reliability
+
+reliability.enable         =  true
+reliability.threshold      =  0.4
+reliability.scaleKernel    =  0.3
+#reliability.minSNR         =  3.0
+reliability.fmin           =  6.0
+reliability.plot           =  true
+reliability.catalog        =  
+reliability.debug          =  true
+
+
+# Mask dilation
+
+dilation.enable            =  false
+dilation.iterationsXY      =  1
+dilation.iterationsZ       =  1
+dilation.threshold         =  0.001
+
+
+# Parameterisation
+
+parameter.enable           =  true
+parameter.wcs              =  true
+parameter.physical         =  false
+parameter.prefix           =  SoFiA
+parameter.offset           =  false
+
+
+# Output
+
+output.directory           =  results/sofia/0
+output.filename            =  subcube_0
+output.writeCatASCII       =  true
+output.writeCatXML         =  true
+output.writeCatSQL         =  false
+output.writeNoise          =  false
+output.writeFiltered       =  false
+output.writeMask           =  false
+output.writeMask2d         =  false
+output.writeRawMask        =  false
+output.writeMoments        =  true
+output.writeCubelets       =  true
+output.marginCubelets      =  5
+output.overwrite           =  true

@@ -97,6 +97,21 @@ def update_parfile(parfile, output_path, datacube,
         fileout.write(lines)
     return updated_parfile
 
+def eliminate_time(cat):
+    # Read in the file
+    with open(cat, 'r') as infile :
+      lines = infile.readlines()
+    
+    # Replace the target string
+    for i, line in enumerate(lines):
+        if line[:7] == '# Time:':
+            lines[i] = '# Time:\n'
+
+    # Write the file out again
+    with open(cat, 'w') as infile:
+        for i in lines:
+            infile.write(i)
+
 def run_sofia(parfile, outname, datacube, results_path,
               scfind_threshold, reliability_fmin,
               reliability_threshold):
@@ -124,7 +139,12 @@ def run_sofia(parfile, outname, datacube, results_path,
     #It makes sense to not run this when the results exist but maybe a check
     #on an existing catalog is better
     output_path = os.path.join(results_path, outname)
-    output_catalog = os.path.join(output_path, f'{outname}_{datacube}_cat.txt')
+    datacube_name = os.path.basename(datacube).replace('.fits','')
+    output_catalog = os.path.join(output_path, f'{datacube_name}_cat.txt')
+    print('AAA', output_catalog)
+    print(results_path)
+    print(outname)
+    print(output_path)
     if not os.path.isdir(output_path):
         os.mkdir(output_path)
     if not os.path.isfile(output_catalog):
@@ -135,6 +155,7 @@ def run_sofia(parfile, outname, datacube, results_path,
         if is_tool('sofia'):
             print('Executing Sofia-2')
             subprocess.call(["sofia", f"{updated_parfile}"])
+            eliminate_time(output_catalog)
         else:
             print('sofia not available. Please install Sofia-2')
             sys.exit(1)

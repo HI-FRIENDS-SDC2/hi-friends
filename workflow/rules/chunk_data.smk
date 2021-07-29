@@ -1,5 +1,6 @@
 rule define_chunks:
     input:
+        config['incube']
     output:
         config['coord_file'],
 	config['grid_plot']
@@ -18,6 +19,7 @@ rule define_chunks:
 
 rule split_subcube:
     input:
+        config['incube'],
         config['coord_file'],
 	config['grid_plot']
     output:

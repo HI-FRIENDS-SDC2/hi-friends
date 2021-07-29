@@ -13,3 +13,4 @@ dependencies:
   - python=3.*
   - python-wget
   - jupyterlab
+  - pytest=6.2.4
