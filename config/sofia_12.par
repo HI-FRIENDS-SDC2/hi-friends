@@ -10,7 +10,7 @@
 
 pipeline.verbose           =  true
 pipeline.pedantic          =  false
-pipeline.threads           =  20 # up to 32 now
+pipeline.threads           =  32 # up to 32 now
 
 
 # Input
@@ -48,7 +48,7 @@ contsub.padding            =  3
 scaleNoise.enable          =  true
 scaleNoise.mode            =  spectral
 scaleNoise.statistic       =  mad
-scaleNoise.fluxRange       =  full  # negative
+scaleNoise.fluxRange       =  negative
 scaleNoise.windowXY        =  99
 scaleNoise.windowZ         =  5
 scaleNoise.gridXY          =  0
@@ -61,7 +61,7 @@ scaleNoise.scfind          =  true
 scfind.enable              =  true
 scfind.kernelsXY           =  0, 4, 8
 scfind.kernelsZ            =  0, 5, 11, 21, 41
-scfind.threshold           =  3.5 
+scfind.threshold           =  scfind_threshold
 scfind.replacement         =  2.0
 scfind.statistic           =  mad
 scfind.fluxRange           =  negative
@@ -79,7 +79,7 @@ threshold.fluxRange        =  negative
 # Linker
 
 linker.enable              =  true
-linker.radiusXY            =  6
+linker.radiusXY            =  4
 linker.radiusZ             =  5
 linker.minSizeXY           =  5
 linker.minSizeZ            =  3 # 6 km/s channel
@@ -92,10 +92,10 @@ linker.keepNegative        =  false # try this
 # Reliability
 
 reliability.enable         =  true
-reliability.threshold      =  0.2
+reliability.threshold      =  reliability_threshold
 reliability.scaleKernel    =  0.3
 #reliability.minSNR         =  3.0
-reliability.fmin           =  6.0
+reliability.fmin           =  reliability_fmin
 reliability.plot           =  true
 reliability.catalog        =  
 reliability.debug          =  true
@@ -130,7 +130,7 @@ output.writeFiltered       =  false
 output.writeMask           =  false
 output.writeMask2d         =  false
 output.writeRawMask        =  false
-output.writeMoments        =  false
-output.writeCubelets       =  false
+output.writeMoments        =  true
+output.writeCubelets       =  true
 output.marginCubelets      =  5
 output.overwrite           =  true

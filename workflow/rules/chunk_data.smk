@@ -1,8 +1,8 @@
 rule define_chunks:
     input:
     output:
-        "results/catalogs/coord_subcubes.csv",
-	"results/plots/subcube_grid.png"
+        config['coord_file'],
+	config['grid_plot']
     conda:
         "../envs/chunk_data.yml"
     log:
@@ -18,7 +18,8 @@ rule define_chunks:
 
 rule split_subcube:
     input:
-        "results/catalogs/coord_subcubes.csv"
+        config['coord_file'],
+	config['grid_plot']
     output:
         #temp("interim/subcubes/subcube_{idx}.fits")
         "interim/subcubes/subcube_{idx}.fits"

@@ -10,9 +10,17 @@ rule run_sofia:
     conda:
         "../envs/process_data.yml"
     params:
-        sofia_param = config['sofia_param']
+        sofia_param = config['sofia_param'],
+        scfind_threshold = config['scfind_threshold'],
+        reliability_fmin = config['reliability_fmin'],
+        reliability_threshold = config['reliability_threshold']
     shell:
-        "python workflow/scripts/run_sofia.py --parfile {params.sofia_param} --outname {wildcards.idx} --datacube {input} -r results/sofia | tee {log}"
+        "python workflow/scripts/run_sofia.py --parfile {params.sofia_param}\
+	--outname {wildcards.idx} --datacube {input} -r results/sofia\
+        --scfind_threshold {params.scfind_threshold}\
+	--reliability_fmin {params.reliability_fmin}\
+	--reliability_threshold {params.reliability_threshold}\
+        | tee {log}"
 
 rule sofia2cat:
     input:

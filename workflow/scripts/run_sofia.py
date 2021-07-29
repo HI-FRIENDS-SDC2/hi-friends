@@ -40,6 +40,12 @@ def get_args():
     parser.add_argument('-d', '--datacube', dest='datacube', help='Data cube to\
                         process. Options are: development, development_large, \
                         evaluation', default='development')
+    parser.add_argument('-s', '--scfind_threshold', dest='scfind_threshold',
+                        help='Define scfind.threshold parameter', default=4.5)
+    parser.add_argument('-f', '--reliability_fmin', dest='reliability_fmin',
+                        help='Define reliability_fmin parameter', default=6)
+    parser.add_argument('-t', '--reliability_threshold', dest='reliability_threshold',
+                        help='Define reliability_threshold parameter', default=0.4)
     args = parser.parse_args()
     return args
 
@@ -53,7 +59,9 @@ def is_tool(name):
 #    return data[parameter]
 
 #def update_parfile(parfile, output_path, datacube, outname):
-def update_parfile(parfile, output_path, datacube):
+def update_parfile(parfile, output_path, datacube,
+              scfind_threshold, reliability_fmin,
+              reliability_threshold):
     '''Updates file with paramenters
     Parameters
     ----------
@@ -83,10 +91,15 @@ def update_parfile(parfile, output_path, datacube):
 #        lines= lines.replace('outname', f'{outname}_{datacube_name}')
         lines= lines.replace('outname', f'{datacube_name}')
         lines= lines.replace('datacube', datacube_path)
+        lines= lines.replace('scfind_threshold', scfind_threshold)
+        lines= lines.replace('reliability_fmin', reliability_fmin)
+        lines= lines.replace('reliability_threshold', reliability_threshold)
         fileout.write(lines)
     return updated_parfile
 
-def run_sofia(parfile, outname, datacube, results_path):
+def run_sofia(parfile, outname, datacube, results_path,
+              scfind_threshold, reliability_fmin,
+              reliability_threshold):
     """Only runs Sofia if the output catalog  does not exist
     Parameters
     ----------
@@ -98,6 +111,12 @@ def run_sofia(parfile, outname, datacube, results_path):
         Data. Data cube
     results_path: str
         Path to save results
+    scfind_threshold: float
+        Sofia parameter scfind_threshold
+    reliability_fmin: float
+        Sofia parameter reliability_fmin
+    reliability_threshold: float
+        Sofia parameter reliability_threshold
     Examples
     --------
     ****
@@ -110,7 +129,9 @@ def run_sofia(parfile, outname, datacube, results_path):
         os.mkdir(output_path)
     if not os.path.isfile(output_catalog):
         #updated_parfile = update_parfile(parfile, output_path, datacube, outname)
-        updated_parfile = update_parfile(parfile, output_path, datacube)
+        updated_parfile = update_parfile(parfile, output_path, datacube,
+              scfind_threshold, reliability_fmin,
+              reliability_threshold)
         if is_tool('sofia'):
             print('Executing Sofia-2')
             subprocess.call(["sofia", f"{updated_parfile}"])
@@ -127,7 +148,10 @@ def main():
     if not os.path.isdir(args.results_path):
         os.mkdir(args.results_path)
     run_sofia(parfile=args.parfile, outname=args.outname,
-              datacube=args.datacube, results_path=args.results_path)
+              datacube=args.datacube, results_path=args.results_path,
+              scfind_threshold=args.scfind_threshold,
+              reliability_fmin=args.reliability_fmin,
+              reliability_threshold=args.reliability_threshold)
 
 if __name__ == '__main__':
     main()

@@ -3,7 +3,7 @@ rule visualize:
     input:
         "results/catalogs/final_catalog.csv",
         "results/catalogs/catalog_w_duplicates.csv",
-	"results/catalogs/coord_subcubes.csv"
+	config['coord_file']
     output:
         "results/plots/output_params_distribution.png"
     log:
