@@ -13,7 +13,7 @@ Well-documented
 - [ ] Documentation consists of clear, step-by-step instructions
 - [ ] Documentation gives examples of what the user can see at each step e.g. screenshots or command-line excerpt
 - [ ] Documentation uses monospace fonts for command-line inputs and outputs, source code fragments, function names, class names etc
-- [ ] Documentation is held under version control alongside the code
+- [X] Documentation is held under version control alongside the code ![repository](https://github.com/HI-FRIENDS-SDC2/hi-friends)
 
 Easy to install 
 
