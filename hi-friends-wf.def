@@ -1,0 +1,12 @@
+Bootstrap: docker
+
+From: continuumio/miniconda3
+
+
+%files
+	. /hi-friends
+
+%post
+	/opt/conda/bin/conda install mamba --channel conda-forge --yes
+	cd hi-friends && mamba env create -f environment.yml 
+  /opt/conda/bin/conda activate snakemake
