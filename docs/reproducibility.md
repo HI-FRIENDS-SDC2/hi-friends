@@ -16,6 +16,7 @@ Well-documented
 - [ ] Documentation is held under version control alongside the code
 
 Easy to install 
+
 - [ ] Full instructions provided for building and installing any software
 - [ ] All dependencies are listed, along with web addresses, suitable versions, licences and whether they are mandatory or optional
 - [ ] All dependencies are available
@@ -23,21 +24,25 @@ Easy to install
 - [ ] A containerised package is available, containing the code together with all of the related configuration files, libraries, and dependencies required. Using e.g. Docker/Singularity
 
 Easy to use 
+
 - [ ] A getting started guide is provided outlining a basic example of using the software e.g. a README file
 - [ ] Instructions are provided for many basic use cases
 - [ ] Reference guides are provided for all command-line, GUI and configuration options
 
 Open licence 
+
 - [ ] Software has an open source licence e.g. GNU General Public License (GPL), BSD 3-Clause
 - [ ] Licence is stated in source code repository
 - [ ] Each source code file has a licence header
 
 Have easily accessible source code
+
 - [ ] Access to source code repository is available online
 - [ ] Repository is hosted externally in a sustainable third-party repository e.g. SourceForge, LaunchPad, GitHub: Introduction to GitHub
 - [ ] Documentation is provided for developers
 
 Adhere to coding standards 
+
 - [ ] Source code is laid out and indented well
 - [ ] Source code is commented
 - [ ] There is no commented out code
@@ -46,5 +51,6 @@ Adhere to coding standards
 - [ ] Source code structure relates clearly to the architecture or design
 
 Utilise tests 
+
 - [ ] Source code has unit tests
 - [ ] Software recommends tools to check conformance to coding standards e.g. A ‘linter’ such as PyLint for Python
