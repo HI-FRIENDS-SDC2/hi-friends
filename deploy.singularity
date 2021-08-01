@@ -9,3 +9,4 @@ From: continuumio/miniconda3
 %post
         /opt/conda/bin/conda install mamba --channel conda-forge --yes
         cd hi-friends && mamba env create -f environment.yml
+		
