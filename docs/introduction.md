@@ -1,7 +1,9 @@
+# The HI-FRIENDS solution of the SKA Data Challenge 2 
+
 In this section we provide a description of the software used and where is stored, in particular we provide a high-level description of what the software is for, high-level description of what the software does, installation instructions with dependencies list and examples of how to run the workflow.   
 
 
-# Software general description and where is stored 
+## Software general description and where is stored 
 
 The [HI-FRIENDS github repository](https://github.com/HI-FRIENDS-SDC2/hi-friends) contains the workflow used to find and characterize the HI sources in the data cube of the SKA Data Challenge 2. This is developed by the HI-FRIENDS team. The execution of the workflow was conducted in the SP-SRC cluster at the IAA-CSIC.
 
@@ -9,7 +11,7 @@ The workflow is managed and executed using [snakemake](https://snakemake.readthe
 
 
 
-# Participants 
+## Participants 
 
 
 - Mohammad Akhlaghi
@@ -33,11 +35,3 @@ The workflow is managed and executed using [snakemake](https://snakemake.readthe
 - Susana Sánchez
 - Amidou Sorgho
 - Lourdes Verdes-Montenegro
-
-
-
-## Acknowledgments
-
-Here we list the credits and acknowledgments for the members of the team.
-
-This work used the SKA Regional Centre Prototype at IAA-CSIC, which is funded by the State Agency for Research of the Spanish MCIU through the "Center of Excellence Severo Ochoa" award to the Instituto de Astrofísica de Andalucía (SEV-2017-0709), the European Regional Development Funds (EQC2019-005707-P), by the Junta de Andalucía (SOMM17_5208_IAA), project RTI2018-096228-B-C31(MCIU/AEI/FEDER,UE) and PTA2018-015980-I(MCIU,CSIC).
