@@ -118,6 +118,6 @@ When clicking in one of the nodes, full provenance is provided:
 ![provenance](figures/provenance_split_subcube.png)
 
 Statistics of the time required for each execution:
-![statistics](figures/snakemake_statistics.png):w
+![statistics](figures/snakemake_statistics.png)
 
 
