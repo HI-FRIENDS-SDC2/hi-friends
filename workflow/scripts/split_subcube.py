@@ -38,7 +38,7 @@ def get_args():
 
 def split_subcube(infile, coord_subcubes, idx):
     '''Creates a fits file containing the coordinates
-    x low x high y low and y high:wç
+    x low x high y low and y high
     Parameters
     ----------
     infile: str
