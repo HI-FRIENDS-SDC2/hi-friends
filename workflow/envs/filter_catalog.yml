@@ -1,0 +1,11 @@
+name: filter_catalog
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - ipython=7.22.0
+  - matplotlib=3.3.4
+  - numpy=1.20.3
+  - pandas=1.2.5
+  - python=3.9.6
+  - scipy
