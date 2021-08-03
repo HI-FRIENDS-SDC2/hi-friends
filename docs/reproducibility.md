@@ -33,22 +33,22 @@ Open licence
 
 - [X] Software has an open source licence e.g. GNU General Public License (GPL), BSD 3-Clause [license](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/LICENSE)
 - [X] License is stated in source code repository [license](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/LICENSE)
-- [X] Each source code file has a licence header [code has license](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
+- [X] Each source code file has a licence header [source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
 
 Have easily accessible source code
 
-- [ ] Access to source code repository is available online
-- [ ] Repository is hosted externally in a sustainable third-party repository e.g. SourceForge, LaunchPad, GitHub: Introduction to GitHub
+- [X] Access to source code repository is available online [repository](https://github.com/HI-FRIENDS-SDC2/hi-friends)
+- [X] Repository is hosted externally in a sustainable third-party repository e.g. SourceForge, LaunchPad, GitHub: Introduction to GitHub [repository](https://github.com/HI-FRIENDS-SDC2/hi-friends)
 - [ ] Documentation is provided for developers
 
 Adhere to coding standards 
 
-- [ ] Source code is laid out and indented well
-- [ ] Source code is commented
-- [ ] There is no commented out code
-- [ ] Source code is structured into modules or packages
-- [ ] Source code uses sensible class, package and variable names
-- [ ] Source code structure relates clearly to the architecture or design
+- [X] Source code is laid out and indented well [source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
+- [X] Source code is commented [source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
+- [ ] There is no commented out code [source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
+- [X] Source code is structured into modules or packages [source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
+- [X] Source code uses sensible class, package and variable names[source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
+- [] Source code structure relates clearly to the architecture or design
 
 Utilise tests 
 
