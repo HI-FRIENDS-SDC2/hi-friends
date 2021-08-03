@@ -9,3 +9,4 @@ dependencies:
   - pandas=1.2.5
   - python=3.9.6
   - scipy
+  - astropy

@@ -28,11 +28,13 @@ rule final_catalog:
     input:
         "results/catalogs/unfiltered_catalog.csv"
     output:
-        "results/catalogs/final_catalog.csv"
+        "results/catalogs/final_catalog.csv",
+	"results/catalogs/unfiltered_catalog_logMD.csv",
+        "results/catalogs/unfiltered_catalog_logMD_filtered.csv"
     conda:
-        "../envs/xmatch_catalogs.yml"
+        "../envs/filter_catalog.yml"
     log:
         "results/logs/concatenate/filter_catalog.log"
     shell:
-        "python workflow/scripts/filter_catalog.py -i {input} -o {output} | tee {log}"
+        "python workflow/scripts/filter_catalog.py -i {input} -o {output[0]} | tee {log}"
 

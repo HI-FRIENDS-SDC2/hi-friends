@@ -20,7 +20,6 @@ This script filters the output catalog based on some conditions
 
 import argparse
 import numpy as np
-from astropy.io import fits
 from astropy.wcs import WCS
 from astropy import constants as const
 from astropy.cosmology import FlatLambdaCDM
@@ -105,7 +104,9 @@ def main():
     df_MD.to_csv(df_MD_file, sep=' ', index=False)
     # Filter based of correlation
     df_filtered = filter_MD(df_MD)
-    dffiltered = df_filtered.drop(columns=['logM', 'logD'])
+    df_filtered.to_csv(df_MD_file.replace('.csv', '_filtered.csv'),
+        sep=' ', index=False)
+    df_filtered = df_filtered.drop(columns=['logM', 'logD'])
     print(f'Number of entried before filtering: {len(df_MD)}')
     print(f'Number of entried after  filtering: {len(df_filtered)}')
     df_filtered.to_csv(args.outfile, sep=' ', index=False)
