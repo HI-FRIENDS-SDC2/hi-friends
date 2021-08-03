@@ -47,12 +47,12 @@ Adhere to coding standards
 - [X] Source code is commented [source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
 - [ ] There is no commented out code [source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
 - [X] Source code is structured into modules or packages [source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
-- [X] Source code uses sensible class, package and variable names[source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
-- [] Source code structure relates clearly to the architecture or design
+- [X] Source code uses sensible class, package and variable names [source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
+- [ ] Source code structure relates clearly to the architecture or design
 
 Utilise tests 
 
 - [ ] Source code has unit tests
-- [ ] Software recommends tools to check conformance to coding standards e.g. A ‘linter’ such as PyLint for Python
+- [ ] Software recommends tools to check conformance to coding standards e.g. A ‘linter’ such as PyLint for Python 
 
 
