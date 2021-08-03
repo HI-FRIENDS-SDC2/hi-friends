@@ -8,7 +8,8 @@ nav:
     - Methodology: methodology.md
     - Workflow: workflow.md
     - Workflow installation: installation.md
-    - Execution: execution.md 
+    - Execution: execution.md
+    - Documentation for developers: developers.md
     - SDC2 HI-FRIENDS participation: results.md
     - SDC2 reproducibility award: reproducibility.md
     - Acknowledgements: acknowledgements.md 
