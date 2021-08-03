@@ -24,6 +24,7 @@ def test_sofia2cat():
         shutil.copytree(data_path, workdir)
         shutil.copytree(config_path, workdir / "config")
         shutil.copytree(workflow_path, workdir / "workflow")
+        os.system(f'touch {workdir} data/results/sofia/0/s*')
 
         # dbg
         print("results/sofia/0/subcube_0_final_catalog.csv", file=sys.stderr)
@@ -43,6 +44,7 @@ def test_sofia2cat():
             "subcube_id=[0]",
             "num_subcubes=16",
             "pixel_overlap=0",
+            "sofia_param=config/dev12.par",
     
             "--use-conda",
             "--directory",
