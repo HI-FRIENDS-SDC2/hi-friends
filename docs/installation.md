@@ -185,7 +185,7 @@ python run.py
 
 ### Podman
 
-To run the workflow with podman you can bild the image from our repository and using our dockerfile:
+To run the workflow with podman you can build the image from our repository using our dockerfile:
 
 #### Build the image:
 
