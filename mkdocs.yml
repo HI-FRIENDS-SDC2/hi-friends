@@ -1,17 +1,18 @@
 site_name: HI-FRIENDS SDC2
-site_description: 'Documentation to describe the solution by HI-FRIENDS solution to the SDC2'
+site_description: 'Documentation to describe the solution by HI-FRIENDS to the SDC2'
 site_author: 'Laura Darriba'
 repo_url: 
 
 nav:
-    - Home: index.md
-    - Participants: participants.md
+    - Home: introduction.md
     - Methodology: methodology.md
-    - Software: sotfware.md
-    - Code standards: code.md
-    - Results: results.md
-    - Reproducibility: reproducibility.md
-    - Acknowledgments: acknowledgments.md
+    - Workflow: workflow.md
+    - Workflow installation: installation.md
+    - Execution: execution.md 
+    - SDC2 HI-FRIENDS participation: results.md
+    - SDC2 reproducibility award: reproducibility.md
+    - Acknowledgements: acknowledgements.md 
+
 
 theme:
     name: readthedocs

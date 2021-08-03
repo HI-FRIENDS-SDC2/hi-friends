@@ -1,22 +1,6 @@
 # Methodology
 
-Here we describe methodolody, algorithms, and tools used.
+Explain that sofia was used, dask, workflow management, D_HI vs M_HI  correlation, etc
 
-## Subgroups division
 
-The team was divided into several subgroups: 
-- Science context
-- Pre-processing
-- Source finding and characterization
-- Post-processing
-- Machine learning
-- Workflow management
-- Documentation
-- Archive
-- Validation and reproducibility
-
-## Tools used 
-Several repositories and teams were created in GitHub. 
-
-## Algorithms 
 
