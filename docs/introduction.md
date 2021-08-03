@@ -4,7 +4,7 @@ These pages contain the documentation related to the software developed by the H
 
 HI-FRIENDS has implemented a scientific workflow for accomplishing the SDC2. This workflow and the associated scripts have been published in a gitHub repository, including also the software environments and other elements (i.e. conda environments, docker containers or jupyter notebooks) to facilitate its re-execution.
 
-The software is published in a GitHub repository (see below). It is intended for SKA community members interested to know about the software analysis that will be performed on the SKA data. This documentation aims at assisting these scientists to understand, re-use the published scientific workflow as well as to verify it.  
+The software is published in a [GitHub repository](https://github.com/HI-FRIENDS-SDC2/hi-friends). It is intended for SKA community members interested to know about the software analysis that will be performed on the SKA data. This documentation aims at assisting these scientists to understand, re-use the published scientific workflow as well as to verify it.  
 
 
 ## Software general description and where is stored 
