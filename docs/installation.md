@@ -2,7 +2,15 @@
 
 ## Dependencies
 
-The requirements of the workflow are self-contained, and they will be retrieved and installed during execution using `conda`. To run the pipeline you need to have [snakemake](https://snakemake.readthedocs.io/en/stable/) installed. This can be obtained from the `environment.yml` file in the repository as explained in the next Section. The workflow uses the following packages:
+The main software dependencies are: 
+ 
+- [Sofia2](https://github.com/SoFiA-Admin/SoFiA-2/) (version 2.3.0) which is licensed under the [GNU General Public License v3.0](https://github.com/SoFiA-Admin/SoFiA-2/blob/master/LICENSE)
+- [Conda](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh) (version 4.9.2) which is released under the [3-clause BSD license](https://docs.conda.io/en/latest/license.html)
+- [Snakemake](https://snakemake.readthedocs.io/en/stable/) (snakemake-minimal version 6.5.3) which is licensed under the [MIT License](https://snakemake.readthedocs.io/en/stable/project_info/license.html)  
+
+
+
+The requirements of the HI-FRIENDS data challenge solution workflow are self-contained, and they will be retrieved and installed during execution using `conda`. To run the pipeline you need to have [snakemake](https://snakemake.readthedocs.io/en/stable/) installed. This can be obtained from the `environment.yml` file in the repository as explained in the next Section. The workflow uses the following packages:
 
   - astropy=4.2.1
   - astroquery=0.4.1
