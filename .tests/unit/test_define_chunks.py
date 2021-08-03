@@ -33,7 +33,7 @@ def test_define_chunks():
             "python",
             "-m",
             "snakemake", 
-            "results/plots/coord_subcubes.csv",# results/plots/subcube_grid.png",
+            "results/catalogs/coord_subcubes.csv",# results/plots/subcube_grid.png",
 #            "-F", 
             "-j1",
             "--keep-target-files",

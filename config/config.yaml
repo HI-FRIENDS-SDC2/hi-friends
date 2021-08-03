@@ -4,12 +4,12 @@ threads: 32
 # Cube selection
 #incube: '/mnt/scratch/sdc2/data/evaluation/sky_eval.fits'
 #incube: '/mnt/scratch/sdc2/data/development/sky_dev_v2.fits'
-incube: '/mnt/scratch/sdc2/data/development_large/sky_ldev_v2.fits'
-#incube: '/mnt/sdc2-datacube/sky_full_v2.fits'
+#incube: '/mnt/scratch/sdc2/data/development_large/sky_ldev_v2.fits'
+incube: '/mnt/sdc2-datacube/sky_full_v2.fits'
 
 # Splitting
 subcube_id: 'all'
-coord_file: results/plots/coord_subcubes.csv
+coord_file: results/catalogs/coord_subcubes.csv
 grid_plot: results/plots/subcube_grid.png
 num_subcubes: 4
 pixel_overlap: 40

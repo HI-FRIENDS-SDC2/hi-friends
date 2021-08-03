@@ -14,7 +14,6 @@ import common
 def test_final_catalog():
 
     with TemporaryDirectory() as tmpdir:
-        tmpdir='tmpdir'
         workdir = Path(tmpdir) / "workdir"
         data_path = PurePosixPath(".tests/unit/final_catalog/data")
         expected_path = PurePosixPath(".tests/unit/final_catalog/expected")
