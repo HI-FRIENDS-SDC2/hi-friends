@@ -140,7 +140,7 @@ cd hi-friends
 3. Build the Hi-Friends workflow image:
 
 ```
-singularity build hi-friends-wf.sif hi-friends-wf.def
+singularity build --fakeroot hi-friends-wf.sif deploy.singularity
 ```
 
 #### Run the workflow
@@ -148,7 +148,7 @@ singularity build hi-friends-wf.sif hi-friends-wf.def
 Once this is done, you can now launch the workflow as follows
 
 ```
-singularity shell --cleanenv hi-friends-wf.sif 
+singularity shell --cleanenv --bind $PWD hi-friends-wf.sif 
 ```
 
 And now, set the environment and activate it:
@@ -160,13 +160,19 @@ conda activate snakemake
 
 and now, run the Hi-Friends workflow:
 
-(a) Test workflow execution.
+(a) Run the unit tests to verify the workflow steps
+
+```
+python -m pytest .tests/unit/
+```
+
+(b) Test complete workflow execution.
 
 ```
 python run.py --check
 ```
 
-(b) Execution of the workflow for *Hi-Friends*:
+(c) Execution of the workflow for *Hi-Friends*:
 
 ```
 python run.py 
