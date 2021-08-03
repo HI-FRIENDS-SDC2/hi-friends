@@ -31,9 +31,9 @@ Easy to use
 
 Open licence 
 
-- [ ] Software has an open source licence e.g. GNU General Public License (GPL), BSD 3-Clause
-- [ ] Licence is stated in source code repository
-- [ ] Each source code file has a licence header
+- [X] Software has an open source licence e.g. GNU General Public License (GPL), BSD 3-Clause [license](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/LICENSE)
+- [X] License is stated in source code repository [license](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/LICENSE)
+- [X] Each source code file has a licence header [code has license](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
 
 Have easily accessible source code
 
