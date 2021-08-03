@@ -7,7 +7,7 @@ The main software dependencies are:
 - [Sofia2](https://github.com/SoFiA-Admin/SoFiA-2/) (version 2.3.0) which is licensed under the [GNU General Public License v3.0](https://github.com/SoFiA-Admin/SoFiA-2/blob/master/LICENSE)
 - [Conda](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh) (version 4.9.2) which is released under the [3-clause BSD license](https://docs.conda.io/en/latest/license.html)
 - [Snakemake](https://snakemake.readthedocs.io/en/stable/) (snakemake-minimal version 6.5.3) which is licensed under the [MIT License](https://snakemake.readthedocs.io/en/stable/project_info/license.html)  
-- [Spectral-cube](https://spectral-cube.readthedocs.io/en/latest/installing.html#installation)(version 0.5.0) which is licensed under a [BSD 3-Clause license] (https://github.com/radio-astro-tools/spectral-cube/blob/master/LICENSE.rst)
+- [Spectral-cube](https://spectral-cube.readthedocs.io/en/latest/installing.html#installation)(version 0.5.0) which is licensed under a [BSD 3-Clause license](https://github.com/radio-astro-tools/spectral-cube/blob/master/LICENSE.rst)
 - [Astropy](https://www.astropy.org)(version 4.2.1) which is licensed under a [3-clause BSD style license](https://docs.astropy.org/en/stable/license.html?highlight=license#astropy-license)
 
 
