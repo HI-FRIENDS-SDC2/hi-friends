@@ -9,12 +9,12 @@ The software is published in a [GitHub repository](https://github.com/HI-FRIENDS
 
 ## Software general description and where is stored 
 
-The [HI-FRIENDS github repository](https://github.com/HI-FRIENDS-SDC2/hi-friends) contains the workflow used to find and characterize the HI sources in the data cube of the SKA Data Challenge 2. This is developed by the HI-FRIENDS team. The execution of the workflow was conducted in the SKA Regional Centre Prototype cluster at the IAA-CSIC (Spain).
+The [HI-FRIENDS github repository](https://github.com/HI-FRIENDS-SDC2/hi-friends) contains the workflow used to find and characterize the HI sources in the data cube of the SKA Data Challenge 2. This is developed by the HI-FRIENDS team. The execution of the workflow was conducted in the [SKA Regional Centre Prototype cluster at the IAA-CSIC (Spain)](https://sdc2.astronomers.skatelescope.org/computational-resources/iaa-csic-proto-src).
 
 The workflow is managed and executed using [snakemake](https://snakemake.readthedocs.io/en/stable/) workflow management system. It uses `spectral-cube` based on `dask` parallelization tool and `astropy` suite to divide the large cube in smaller pieces. On each of the subcubes, we execute [Sofia-2](https://github.com/SoFiA-Admin/SoFiA-2) for masking the subcubes, find sources and characterize their properties. Finally, the individual catalogs are cleaned, concatenated into a single catalog, and duplicates from the overlapping regions are eliminated. Some diagnostic plots are produced using Jupyter notebook.
 
 
-## Participants 
+## The HI-FRIENDS team 
 
 - Mohammad Akhlaghi
 - Antxon Alberdi
