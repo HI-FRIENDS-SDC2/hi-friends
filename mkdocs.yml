@@ -4,7 +4,7 @@ site_author: 'Laura Darriba'
 repo_url: 
 
 nav:
-    - Home: introduction.md
+    - Home: index.md
     - Methodology: methodology.md
     - Workflow: workflow.md
     - Workflow installation: installation.md
