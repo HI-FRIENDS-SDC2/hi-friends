@@ -102,7 +102,7 @@ cd hi-friends
 3. Now build the image. For this we build and tag the image as ``hi-friends-wf``:
 
 ```
-docker build -t hi-friends-wf -f deploy.docker
+docker build -t hi-friends-wf -f deploy.docker .
 ```
 
 #### Run the workflow
@@ -150,7 +150,7 @@ cd hi-friends
 3. Build the Hi-Friends workflow image:
 
 ```
-singularity build hi-friends-wf.sif hi-friends-wf.def
+singularity build hi-friends-wf.sif deploy.singularity
 ```
 
 #### Run the workflow
@@ -181,3 +181,52 @@ python run.py --check
 ```
 python run.py 
 ```
+
+
+### Podman
+
+To run the workflow with podman you can build the image from our repository using our dockerfile:
+
+#### Build the image:
+
+1. Clone the respository from this ``github`` repository:
+
+```
+git clone https://github.com/HI-FRIENDS-SDC2/hi-friends.git
+```
+
+2. Change to the created directory:
+
+```
+cd hi-friends
+```
+
+3. Build the Hi-Friends workflow image:
+
+```
+podman build -t hi-friends-wf -f deploy.docker .
+```
+
+4. Run the workflow:
+
+```
+podman  run  -it hi-friends-wf
+```
+
+
+#### Run the workflow
+
+Once inside the container:
+
+(a) Test workflow execution.
+
+```
+python run.py --check
+```
+
+(b) Execution of the workflow for *Hi-Friends*:
+
+```
+python run.py 
+```
+
