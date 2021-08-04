@@ -77,6 +77,25 @@ cd hi-friends
 mamba env create -f environment.yml
 conda activate snakemake
 ```
+Now you can execute the pipeline in different ways:
+
+(a) Test workflow execution.
+
+```
+python run.py --check
+```
+
+(b) Execution of the workflow for *Hi-Friends*. You may want to modify the contents of `config/config.yaml`:
+
+```
+python run.py 
+```
+
+You can also run the unit tests to verify each individual step:
+
+```
+python -m pytest .tests/unit/
+```
 
 
 ## Deploy in containers
@@ -122,7 +141,7 @@ Once inside the container:
 python run.py --check
 ```
 
-(b) Execution of the workflow for *Hi-Friends*:
+(b) Execution of the workflow for *Hi-Friends*. You may want to modify the contents of `config/config.yaml`:
 
 ```
 python run.py 
@@ -150,7 +169,7 @@ cd hi-friends
 3. Build the Hi-Friends workflow image:
 
 ```
-singularity build hi-friends-wf.sif deploy.singularity
+singularity build --fakeroot hi-friends-wf.sif deploy.singularity
 ```
 
 #### Run the workflow
@@ -158,7 +177,7 @@ singularity build hi-friends-wf.sif deploy.singularity
 Once this is done, you can now launch the workflow as follows
 
 ```
-singularity shell --cleanenv hi-friends-wf.sif 
+singularity shell --cleanenv --bind $PWD hi-friends-wf.sif 
 ```
 
 And now, set the environment and activate it:
@@ -176,7 +195,7 @@ and now, run the Hi-Friends workflow:
 python run.py --check
 ```
 
-(b) Execution of the workflow for *Hi-Friends*:
+(b) Execution of the workflow for *Hi-Friends*. You may want to modify the contents of `config/config.yaml`:
 
 ```
 python run.py 
@@ -224,7 +243,7 @@ Once inside the container:
 python run.py --check
 ```
 
-(b) Execution of the workflow for *Hi-Friends*:
+(b) Execution of the workflow for *Hi-Friends*. You may want to modify the contents of `config/config.yaml`:
 
 ```
 python run.py 
