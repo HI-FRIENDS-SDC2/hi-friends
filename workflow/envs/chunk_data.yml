@@ -13,3 +13,4 @@ dependencies:
   - pip=21.0.1
   - python=3.9.6
   - spectral-cube=0.5.0
+  - ipykernel
