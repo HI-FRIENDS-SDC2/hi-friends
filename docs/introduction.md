@@ -16,21 +16,21 @@ The workflow is managed and executed using [snakemake](https://snakemake.readthe
 
 ## The HI-FRIENDS team 
 
-- Mohammad Akhlaghi
-- Antxon Alberdi
-- John Cannon
-- Laura Darriba
-- José Francisco Gómez
-- Julián Garrido
-- Josh Gósza
-- Diego Herranz
-- Mike Jones
-- Peter Kamphuis
-- Dane Kleiner
-- Isabel Márquez
-- Javier Moldón
-- Mamta Pandey-Pommier
-- Pepe Sabater
-- Susana Sánchez
-- Amidou Sorgho
-- Lourdes Verdes-Montenegro
+- Mohammad Akhlaghi - Instituto de Astrofísica de Canarias
+- Antonio Alberdi - Instituto de Astrofísica de Andalucía, CSIC
+- John Cannon - Macalester College
+- Laura Darriba - Instituto de Astrofísica de Andalucía, CSIC
+- José Francisco Gómez - Instituto de Astrofísica de Andalucía, CSIC
+- Julián Garrido - Instituto de Astrofísica de Andalucía, CSIC
+- Josh Gósza - South African Radio Astronomy Observatory 
+- Diego Herranz - Instituto de Física de Cantabria
+- Michael G. Jones - The University of Arizona
+- Peter Kamphuis - Ruhr University Bochum
+- Dane Kleiner - Italian National Institute for Astrophysics
+- Isabel Márquez - Instituto de Astrofísica de Andalucía, CSIC
+- Javier Moldón - Instituto de Astrofísica de Andalucía, CSIC
+- Mamta Pandey-Pommier - Centre  de  Recherche  Astrophysique  de  Lyon,  Observatoire  deLyon
+- José Sabater - University of Edinburgh
+- Susana Sánchez - Instituto de Astrofísica de Andalucía, CSIC
+- Amidou Sorgho - Instituto de Astrofísica de Andalucía, CSIC
+- Lourdes Verdes-Montenegro - Instituto de Astrofísica de Andalucía, CSIC
