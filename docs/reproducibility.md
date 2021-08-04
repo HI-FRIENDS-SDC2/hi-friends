@@ -10,15 +10,15 @@ Well-documented
 - [X] High-level description of what/who the software is for is available [the HI-FRIENDS solution to the SDC2](https://hi-firends-sdc2.readthedocs.io/en/latest/#the-hi-friends-solution-to-the-sdc2)
 - [X] High-level description of what the software does is available [software general description](https://hi-firends-sdc2.readthedocs.io/en/latest/#workflow-general-description)
 - [X] High-level description of how the software works is available [workflow](https://hi-friends-sdc2.readthedocs.io/en/latest/workflow/)
-- [ ] Documentation consists of clear, step-by-step instructions
+- [ ] Documentation consists of clear, step-by-step instructions [workflow installation](https://hi-firends-sdc2.readthedocs.io/en/latest/installation/) [execution](https://hi-firends-sdc2.readthedocs.io/en/latest/execution/) [methodology](https://hi-firends-sdc2.readthedocs.io/en/latest/methodology/)
 - [ ] Documentation gives examples of what the user can see at each step e.g. screenshots or command-line excerpt
 - [ ] Documentation uses monospace fonts for command-line inputs and outputs, source code fragments, function names, class names etc
 - [X] Documentation is held under version control alongside the code [repository](https://github.com/HI-FRIENDS-SDC2/hi-friends)
 
 Easy to install 
 
-- [ ] Full instructions provided for building and installing any software [worklow installation]()
-- [ ] All dependencies are listed, along with web addresses, suitable versions, licences and whether they are mandatory or optional
+- [ ] Full instructions provided for building and installing any software [worklow installation]((https://hi-firends-sdc2.readthedocs.io/en/latest/installation/))
+- [ ] All dependencies are listed, along with web addresses, suitable versions, licences and whether they are mandatory or optional  [worklow installation]((https://hi-firends-sdc2.readthedocs.io/en/latest/installation/))
 - [ ] All dependencies are available 
 - [ ] Tests are provided to verify that the installation has succeeded []()
 - [ ] A containerised package is available, containing the code together with all of the related configuration files, libraries, and dependencies required. Using e.g. Docker/Singularity [docker]()
