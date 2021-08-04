@@ -25,7 +25,6 @@ import matplotlib.pyplot as plt
 
 def get_args():
     '''This function parses and returns arguments passed in'''
-    # Assign description to the help doc
     description = 'Define coordinates of grid of subcubes'
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('-d', '--datacube', dest='datacube', \
@@ -48,19 +47,16 @@ def define_subcubes(steps, wcs, overlap, subcube_size_pix):
     ----------
     steps: int
         Steps to grid the cube.
-    wcs: object
-        ****
+    wcs: class astropy.wcs
+        wcs of the fits file
     overlap: int
-        Number of pixels overlaping between subcubes ****
+        Number of pixels overlaping between subcubes
     subcube_size_pix: int
-        ****
+        Number of pixels of the side of the subcubes
     Returns
     -------
     coord_subcubes: array
         Array with the coordinates of rthe subcubes
-    Examples
-    --------
-      ****
     '''
     coord_subcubes = []
     for s_x in steps:
@@ -84,18 +80,12 @@ def plot_subcubes(coord_subcubes, l_s='-', color=None, l_w=1):
     ----------
     coord_subcubes: int
         Steps to grid the cube.
-    l_s: *****
+    l_s: str
         Line style. Defalult value is solid line
-    color: ****
+    color: str
         Line color. Default value is no color.
-    l_w: ****
+    l_w: float
         Line width. Default value is 1.
-    Returns
-    -------
-    ****
-    Examples
-    --------
-    ****
     '''
     for i, coord in  enumerate(coord_subcubes):
         xlo, ylo, xhi, yhi = coord
@@ -111,16 +101,10 @@ def plot_border(wcs, n_pix):
     '''Plot boundaries of subcubes
     Parameters
     ----------
-    wcs: object
-        ****
+    wcs: class astropy.wcs
+        wcs of the fits file
     n_pix: int
         Number of pixels of the cube side.
-    Returns
-    -------
-    ****
-    Examples
-    --------
-    ****
     '''
     brc = wcs.pixel_to_world(0,0,0)[0]
     trc = wcs.pixel_to_world(0,n_pix,0)[0]
@@ -131,7 +115,6 @@ def plot_border(wcs, n_pix):
             'k-', lw=4)
 
 
-
 def write_subcubes(steps, wcs, overlap, subcube_size_pix, coord_file):
     '''Return coordinates of subcubes. Save file `coord_file` in the results
     folder containing the coordinates of the subcubes
@@ -139,21 +122,18 @@ def write_subcubes(steps, wcs, overlap, subcube_size_pix, coord_file):
     ----------
     steps: int
         Steps to grid the cube.
-    wcs: object
-        ****
+    wcs: class astropy.wcs
+        wcs of the fits file
     overlap: int
-        Number of pixels overlaping between subcubes ****
+        Number of pixels overlaping between subcubes
     subcube_size_pix: int
-        ****
+        Number of pixels of the side of the subcubes
     Returns
     -------
-    coord_subcubes=array
-        Array containing coordinates of subcubes.
-    Examples
-    --------
-    ****
+    coord_subcubes array
+        Array containing coordinates of subcubes of the edges of the subcubes
     '''
-    ## Find subcubes coordinates and write them
+    # Find subcubes coordinates and write them
     coord_subcubes = define_subcubes(steps, wcs, overlap, subcube_size_pix)
     print(coord_file)
     np.savetxt(coord_file, coord_subcubes, delimiter=",",
@@ -165,28 +145,21 @@ def plot_grid(wcs, coord_subcubes, grid_plot, n_pix):
     ''' Plot grid of subcubes
     Parameters
     ----------
-    wcs: object
-        ****
+    wcs: class astropy.wcs
+        wcs of the fits file
     coord_subcubes: array
         Array containing coordinates of subcubes.
-    grid_plot: ****
-        ****
+    grid_plot: str
+        Path to save the grid plot
     n_pix: int
-        Number of pixels of the side of the cube.
-    Returns
-    -------
-    ****
-    Examples
-    --------
-    ****
+        Number of pixels of the cube side.
     '''
     # It is not correcly projecting the pixels when using this mode.
-    #Alternatively, I could use APLpy
-    #plt.subplot(projection=wcs, slices=['x','y', 0])
+    # Alternatively, I could use APLpy
+    # plt.subplot(projection=wcs, slices=['x','y', 0])
     plt.subplot()
     plot_border(wcs, n_pix)
     plot_subcubes(coord_subcubes)
-    #plt.grid()
     plt.xlabel('R.A. [deg]')
     plt.ylabel('Dec. [deg]')
     plt.gca().invert_xaxis()

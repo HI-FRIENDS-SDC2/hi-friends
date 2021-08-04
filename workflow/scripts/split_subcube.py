@@ -47,12 +47,6 @@ def split_subcube(infile, coord_subcubes, idx):
         Array containing coordinates of subcubes
     idx: int
         Index of subcube
-    Returns
-    -------
-    ****
-    Examples
-    --------
-    ****
     '''
     print(f'Now exporting item {idx}')
     print(coord_subcubes[idx])

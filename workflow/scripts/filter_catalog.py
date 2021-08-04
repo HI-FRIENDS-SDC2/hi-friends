@@ -28,7 +28,6 @@ import pandas as pd
 
 def get_args():
     '''This function parses and returns arguments passed in'''
-    # Assign description to the help doc
     description = 'Eliminate duplicates from catalog for sources in the overlapping regions'
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('-i', '--infile', dest='infile', \
@@ -39,12 +38,34 @@ def get_args():
     return args
 
 def arcsec2kpc(z, theta):
+    '''Converts angular size to linear size given a redshift z
+    Parameters
+    ----------
+    z: float
+        redshift
+    theta: array of floats
+        angular size in arcsec
+    Returns
+    -------
+    distance_kpc: array of floats
+        linear size in kpc
+    '''
     cosmo = FlatLambdaCDM(H0=70, Om0=0.3)
     d_A = cosmo.angular_diameter_distance(z=z)
     distance_kpc = (theta*u.arcsec * d_A).to(u.kpc, u.dimensionless_angles())
     return distance_kpc
 
 def compute_D_M(cat):
+    '''Computes the Mass of HI and linear diameter of the galaxies in a catalog
+    Parameters
+    ----------
+    cat: pandas.DataFrame
+        catalog of galaxies
+    Returns
+    -------
+    cat: pandas.DataFrame
+        original catalog adding the columns log(M_HI) and log(D_HI_kpc)
+    '''
     cspeed = const.c.value/1000      # km/s
     h_small = 0.7
     f0_HI = 1420405751.786
@@ -89,7 +110,18 @@ def filter_MD(df_MD, uplim=0.45, downlim=-0.15):
     return df_out
 
 def freq_to_vel(f0=1420405751.786):
-    restfreq = f0 * u.Hz  # rest frequency of 12 CO 1-0 in GHz
+    '''Convers line frequency to velocity in km/s
+
+    Parameters
+    ----------
+    f0: float
+        rest frequency of the spectral line
+    Returns
+    -------
+    freq2vel: function
+        function to convert frequency in Hz to velocity
+    '''
+    restfreq = f0 * u.Hz
     freq2vel = u.doppler_radio(restfreq)
     return freq2vel
 

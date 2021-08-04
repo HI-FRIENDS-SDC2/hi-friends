@@ -33,7 +33,6 @@ F0_H1 = 1420405751.786    # Hz
 
 def get_args():
     '''This function parses and returns arguments passed in'''
-    # Assign description to the help doc
     description = 'Select dataset'
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('-r', '--results_path', dest='results_path', \
@@ -70,11 +69,11 @@ def sofia2cat(catalog):
        kinematic position angle greater than zero
     Parameters
     ----------
-    catalog: ****
+    catalog: str
         Input file name
     Returns
     -------
-    raw_cat_filtered: ****
+    raw_cat_filtered: pandas DataFrame
         Raw catalog produced by sofia filtered by kinematic position angle
         greater than zero.
     '''
@@ -88,43 +87,39 @@ def sofia2cat(catalog):
 
 def pix2coord(wcs, pix_x, pix_y):
     '''
-    Converts pixels to coordinates ****
+    Converts pixels to coordinates using WCS header info
     Parameters
     ----------
-    wcs: ****
-        Input file name
-    pix_x: ****
-        Pixel ****
-    pix_y: ****
-        Pixel ****
+    wcs: class astropy.wcs
+        wcs of the fits file
+    pix_x: int
+        Pixel number in X direction
+    pix_y: int
+        Pixel number in Y direction
     Returns
     -------
-    coord[0].ra.deg: *****
-        Right ascension
-    coord[0].dec.deg: ****
-        Declination
+    coord[0].ra.deg: float
+        Right ascension in degrees
+    coord[0].dec.deg: float
+        Declination in degrees
     '''
     coord = wcs.pixel_to_world(pix_x, pix_y, 1)
-    #print('coord')
-    #print(coord)
     return coord[0].ra.deg, coord[0].dec.deg
 
-def compute_inclination(bmaj, bmin, varq=0.2):
+def compute_inclination(bmaj, bmin):
     '''Computes inclinaton
     See A7) in http://articles.adsabs.harvard.edu/pdf/1992MNRAS.258..334S
     Note p has been implemented as varp and q has been implemented as vaarq
     Parameters
     ----------
-    bmaj: *****
-        Major axis
-    pix_x: ****
-        Minor axis
-    varq: ****
-        Correction parameter
+    bmaj: float
+        Major axis of ellipse fitted to the galaxy in arcsec
+    pix_x: float
+        Minor axis of ellipse fitted to the galaxy in arcsec
     Returns
     -------
-    np.degrees(np.arccos(cosi)): ****
-        Inclination
+    np.degrees(np.arccos(cosi)): float
+        Inclination in degrees
     '''
     cosi = np.sqrt(((bmin/bmaj)**2 - varq**2)/(1 - varq**2))
     varp = bmin/bmaj
@@ -139,20 +134,20 @@ def convert_units(raw_cat, fitsfile):
     '''Convert units from raw catalog into fitsfile
     Parameters
     ----------
-    raw_cat: *****
+    raw_cat: pandas DataFrame
         Raw catalog
-    fitsfile: ****
-        Fits file
+    fitsfile: string
+        Path to fits file
     Returns
     -------
-    ra_deg: array ****
+    ra_deg: array of floats
         Right ascension
-    dec_deg: array ****
+    dec_deg: array of floats
         Declination
-    pix2arcsec: array ****
-        Arcseconds
-    pix2freq: array ****
-        Frequency
+    pix2arcsec: float
+        Conversion factor from pixel units to arcsec
+    pix2freq: float
+        Conversion factor from channel to Hz
     '''
 
     file = fits.open(fitsfile)
@@ -170,21 +165,21 @@ def frequency_to_vel(freq, invert=False):
     '''Convert frequency to velocity
     Parameters
     ----------
-    freq: *****
-        Frequency
+    freq: float
+        Frequency in Hz
     invert: boolean
         If invert is false then returns velocity.
         If invert is true returns frequency.
     Returns
     -------
-    ra_deg: array ****
+    ra_deg: array of floats
         Right ascension
-    dec_deg: array ****
+    dec_deg: array of floats
         Declination
-    pix2arcsec: array ****
-        Arcseconds
-    pix2freq: array ****
-        Frequency
+    pix2arcsec: float
+        Conversion factor from pixel units to arcsec
+    pix2freq: float
+        Conversion factor from channel to Hz
     '''
     if not invert:
         return cspeed*((F0_H1**2-freq**2)/(F0_H1**2+freq**2))
@@ -196,21 +191,20 @@ def convert_flux(flux,filename):
     to Jy * km/s base on the header
     Parameters
     ----------
-    fux: *****
-        Flux
+    flux: array of floats
+        Flux in Jy/beam
     filename: str
         Name of input file
     Returns
     -------
-    flux/pix_per_beam*cdelt_hz ****
-        ***** in Jy*hz
+    flux/pix_per_beam*cdelt_hz: array of floats
+        flux in Jy*Hz
     '''
 
     hdr = fits.getheader(filename)
     print(hdr['BMAJ'],hdr['BMIN'])
     beamarea=(np.pi*abs(hdr['BMAJ']*hdr['BMIN']))/(4.*np.log(2.))
     pix_per_beam = beamarea/(abs(hdr['CDELT1'])*abs(hdr['CDELT2']))
-    #cdelt_vel = abs(-c*float(hdr['CDELT3'])/F0_H1)
     cdelt_hz = float(hdr['CDELT3'])
     return flux/pix_per_beam*cdelt_hz    #Jy * hz
 
@@ -223,7 +217,7 @@ def convert_frequency_axis(filename, outname, velocity_req = 'radio'):
     outname: str
         Name of output file
     velocity_req: str
-        ****
+        velocity definition framework
     '''
     c_ms = cspeed*1000.
     print(filename)
@@ -282,13 +276,13 @@ def process_catalog(raw_cat, fitsfile):
     '''Process catalog
     Parameters
     ----------
-    raw_cat: ****
+    raw_cat: pandas.DataFrame
         Raw catalog
-    fitsfile: ****
-        Fitsfile containg ****
+    fitsfile: str
+        Path to fits file of processed data cube 
     Returns
     -------
-    processed_cat: ****
+    processed_cat: pandas.DataFrame
         Processed catalog
     '''
     # Unit conversion
@@ -309,7 +303,6 @@ def process_catalog(raw_cat, fitsfile):
                                                        fitsfile)
     if 'freq' in raw_cat:
         processed_cat['central_freq'] =  raw_cat['freq']
-        #processed_cat['central_velocity'] = frequency_to_vel(raw_cat['freq'])
         processed_cat['w20'] = frequency_to_vel(raw_cat['freq']-\
                                raw_cat['w20']/2.*pix2freq)-\
                                frequency_to_vel(raw_cat['freq']+\
@@ -354,8 +347,8 @@ def find_fitsfile(parfile):
         Parameters file
     Returns
     -------
-    fitsfile: ****
-        Fitsfile containing ****
+    fitsfile: str
+        Path to fits file of processed data cube
     """
     with open(parfile, 'r') as infile:
         for line in infile.readlines():
@@ -369,14 +362,11 @@ def main():
     ''' Converts sofia Catalog to the SDC2 catalog'''
     args = get_args()
     output_path = os.path.join(args.results_path, args.outname)
-#    output_catalog = os.path.join(output_path, f'{args.outname}_{args.datacube}_cat.txt')
-#    raw_cat = sofia2cat(catalog=output_catalog)
     incatalog = args.incatalog
     raw_cat = sofia2cat(catalog=incatalog)
     fitsfile = find_fitsfile(os.path.join(output_path, 'sofia.par'))
     processed_cat = process_catalog(raw_cat, fitsfile)
     final_cat_file = incatalog.replace('_cat.txt', '_final_catalog.csv')
-#    final_cat_file = os.path.join(output_path, 'final_catalog.csv')
     processed_cat.to_csv(final_cat_file, sep=' ', index=False)
 
 if __name__ == '__main__':

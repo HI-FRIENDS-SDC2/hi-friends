@@ -26,7 +26,6 @@ from astropy.table import Table
 
 def get_args():
     '''This function parses and returns arguments passed in'''
-    # Assign description to the help doc
     description = 'Eliminate duplicates from catalog for sources in the overlapping regions'
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('-i', '--infile', dest='infile', \
@@ -46,10 +45,8 @@ def read_ref_catalog(infile, name_list):
         List of varible names
     Returns
     -------
-    catalog_table: object***
-    Examples
-    --------
-    ****
+    catalog_table: astropy.Table
+        table with the data
     '''
     catalog_table = Table.read(infile, format='ascii', delimiter=' ', \
                                names=name_list)
@@ -59,8 +56,8 @@ def read_coordinates_from_table(cat):
     '''Reads coordinates from a table
     Parameters
     ----------
-    cat: ****
-        ****
+    cat: astropy.Table
+        table with coordinates
     Returns
     -------
     ras: float
@@ -69,9 +66,6 @@ def read_coordinates_from_table(cat):
         Declination
     freq: float
         Frequency
-    Examples
-    --------
-    ****
     '''
     ras = cat['ra']*u.degree
     dec = cat['dec']*u.degree
@@ -90,13 +84,10 @@ def find_catalog_duplicates(ras, dec, freq):
         Frequency
     Returns
     -------
-    cond: array
-        *****
-    idx: array****
-         Index ****
-    Examples
-    --------
-    ****
+    cond: Bool array
+        array storing proximity criteria
+    idx: int array
+         Index of the duplicated sources
     '''
     coord = SkyCoord(ra=ras, dec=dec)
     idx, d2d, _ = coord.match_to_catalog_sky(coord, nthneighbor=2)
@@ -106,32 +97,27 @@ def find_catalog_duplicates(ras, dec, freq):
     freq_sep = abs(freq - freq[idx])
     freq_constraint = freq_sep < max_freq
     cond = sep_constraint * freq_constraint
-    #c_matches = coord[cond]
     return cond, idx
 
 def mask_worse_duplicates(cond, idx, catalog_table):
     '''Finds worse duplicates and masks them
     Parameters
     ----------
-    con: ****
-        ****
-    idx: array****
-        Index of ****
-    catalog_table: astropy table
-        ****
+    cond: Bool array
+        array storing proximity criteria
+    idx: int array
+         Index of the duplicated sources
+    catalog_table: astropy.Table
+        table with 
     Returns
     -------
-    duplicates: array
-        Array containing the duplicates. True means it is a worse duplicate.
-        False means it is not a worse duplicate.
-    Examples
-    --------
-    ****
+    duplicates: Bool array
+        array with True when source is duplicated
     '''
     duplicates = np.copy(cond)
     print('id1 subcube1 id_subcube1 rms1 id2 subcube2 id_subcube2 rms2')
     # Here we are counting all matches twice.
-    #We could directly use the first half of the matches
+    # We could directly use the first half of the matches
     for i in np.where(cond)[0]:
         id1 = catalog_table[idx[i]]['id_subcube']
         id2 = catalog_table[i]['id_subcube']

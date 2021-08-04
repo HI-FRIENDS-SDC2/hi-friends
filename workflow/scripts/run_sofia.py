@@ -27,7 +27,6 @@ from shutil import which
 # Functions
 def get_args():
     '''This function parses and returns arguments passed in'''
-    # Assign description to the help doc
     description = 'Select dataset'
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('-p', '--parfile', dest='parfile', \
@@ -53,43 +52,30 @@ def is_tool(name):
     """Check whether `name` is on PATH and marked as executable."""
     return which(name) is not None
 
-#def read_config_parameter(configfile, parameter):
-#    with open(configfile) as f:
-#        data = yaml.load(f, Loader=yaml.FullLoader)
-#    return data[parameter]
-
-#def update_parfile(parfile, output_path, datacube, outname):
 def update_parfile(parfile, output_path, datacube,
               scfind_threshold, reliability_fmin,
               reliability_threshold):
     '''Updates file with paramenters
     Parameters
     ----------
-    parfile: str****
-        File contanining parameters
+    parfile: str
+        File contanining sofia parameters
     output_path: str
-        Path of output file ****
-    datacube: ****
-        Data. Data cube
+        Path of output file
+    datacube: str
+        Path to datacube
     outname: str
         Name of output file
     Returns
     -------
-    updated_parfile: ****
-        File with updated parameters
-    Examples
-    --------
-    ****
+    updated_parfile: str
+        Path of file with updated parameters
     '''
     updated_parfile = os.path.join(output_path, 'sofia.par')
-#    configfile = 'config/config.yml'
-#    datacube_path = read_config_parameter(configfile, datacube)
     datacube_path = datacube
     datacube_name = os.path.basename(datacube).rstrip('.fits')
     with open(parfile, 'r') as filein, open(updated_parfile, 'w') as fileout:
         lines = filein.read().replace('output_path', output_path)
-#        lines= lines.replace('outname', f'{outname}_{datacube_name}')
-        lines= lines.replace('outname', f'{datacube_name}')
         lines= lines.replace('datacube', datacube_path)
         lines= lines.replace('scfind_threshold', scfind_threshold)
         lines= lines.replace('reliability_fmin', reliability_fmin)
@@ -98,6 +84,12 @@ def update_parfile(parfile, output_path, datacube,
     return updated_parfile
 
 def eliminate_time(cat):
+    '''Eliminates timestamp from sofia catalog. Updates the file
+    Parameters
+    ----------
+    cat: str
+        Path to sofia catalog
+    '''
     # Read in the file
     with open(cat, 'r') as infile :
       lines = infile.readlines()
@@ -118,12 +110,12 @@ def run_sofia(parfile, outname, datacube, results_path,
     """Only runs Sofia if the output catalog  does not exist
     Parameters
     ----------
-    parfile: str****
+    parfile: str
         File contanining parameters
     outname: str
         Name of output file
-    datacube: ****
-        Data. Data cube
+    datacube: str
+        Path to data cube
     results_path: str
         Path to save results
     scfind_threshold: float
@@ -132,23 +124,15 @@ def run_sofia(parfile, outname, datacube, results_path,
         Sofia parameter reliability_fmin
     reliability_threshold: float
         Sofia parameter reliability_threshold
-    Examples
-    --------
-    ****
     """
     #It makes sense to not run this when the results exist but maybe a check
     #on an existing catalog is better
     output_path = os.path.join(results_path, outname)
     datacube_name = os.path.basename(datacube).replace('.fits','')
     output_catalog = os.path.join(output_path, f'{datacube_name}_cat.txt')
-    print('AAA', output_catalog)
-    print(results_path)
-    print(outname)
-    print(output_path)
     if not os.path.isdir(output_path):
         os.mkdir(output_path)
     if not os.path.isfile(output_catalog):
-        #updated_parfile = update_parfile(parfile, output_path, datacube, outname)
         updated_parfile = update_parfile(parfile, output_path, datacube,
               scfind_threshold, reliability_fmin,
               reliability_threshold)
