@@ -72,15 +72,18 @@ def update_parfile(parfile, output_path, datacube,
         Path of file with updated parameters
     '''
     updated_parfile = os.path.join(output_path, 'sofia.par')
+    print(f'Updated parfile: {updated_parfile}')
     datacube_path = datacube
     datacube_name = os.path.basename(datacube).rstrip('.fits')
     with open(parfile, 'r') as filein, open(updated_parfile, 'w') as fileout:
         lines = filein.read().replace('output_path', output_path)
         lines= lines.replace('datacube', datacube_path)
+        lines= lines.replace('outname', f'{datacube_name}')
         lines= lines.replace('scfind_threshold', scfind_threshold)
         lines= lines.replace('reliability_fmin', reliability_fmin)
         lines= lines.replace('reliability_threshold', reliability_threshold)
         fileout.write(lines)
+    print(os.path.isfile(updated_parfile))
     return updated_parfile
 
 def eliminate_time(cat):
@@ -133,6 +136,7 @@ def run_sofia(parfile, outname, datacube, results_path,
     if not os.path.isdir(output_path):
         os.mkdir(output_path)
     if not os.path.isfile(output_catalog):
+        print(f'Parfile: {parfile}')
         updated_parfile = update_parfile(parfile, output_path, datacube,
               scfind_threshold, reliability_fmin,
               reliability_threshold)

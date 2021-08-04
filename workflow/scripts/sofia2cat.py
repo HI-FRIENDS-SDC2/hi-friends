@@ -121,7 +121,6 @@ def compute_inclination(bmaj, bmin):
     np.degrees(np.arccos(cosi)): float
         Inclination in degrees
     '''
-    cosi = np.sqrt(((bmin/bmaj)**2 - varq**2)/(1 - varq**2))
     varp = bmin/bmaj
     varq = 0.65*varp - 0.072*varp**3.9
     cosi = np.sqrt(
