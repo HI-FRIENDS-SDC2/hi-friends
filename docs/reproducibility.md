@@ -56,3 +56,25 @@ Utilise tests
 - [ ] Software recommends tools to check conformance to coding standards e.g. A ‘linter’ such as PyLint for Python 
 
 
+
+# Examples
+
+## Unit test
+The unit tests in the repository verify that the output from the different workflow rules match byte by byte with the outputs expected by the workflow on a small test example. We executed the tests on [myBinder](https://mybinder.org/), which automatically installs all the dependencies. We run this single command and obtained the following output:
+```
+jovyan@jupyter-hi-2dfriends-2dsdc2-2dhi-2dfriends-2dfsc1x4x2:~$ python -m pytest .tests/unit/
+===================================================================================================== test session starts =====================================================================================================
+platform linux -- Python 3.9.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: /home/jovyan
+plugins: anyio-2.2.0
+collected 6 items                                                                                                                                                                                                             
+
+.tests/unit/test_all.py .                                                                                                                                                                                               [ 16%]
+.tests/unit/test_concatenate_catalogs.py .                                                                                                                                                                              [ 33%]
+.tests/unit/test_define_chunks.py .                                                                                                                                                                                     [ 50%]
+.tests/unit/test_final_catalog.py .                                                                                                                                                                                     [ 66%]
+.tests/unit/test_run_sofia.py .                                                                                                                                                                                         [ 83%]
+.tests/unit/test_sofia2cat.py .                                                                                                                                                                                         [100%]
+
+================================================================================================ 6 passed in 206.24s (0:03:26) ================================================================================================
+```
