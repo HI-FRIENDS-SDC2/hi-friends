@@ -11,7 +11,7 @@ Well-documented
 - [X] High-level description of what the software does is available [software general description](https://hi-firends-sdc2.readthedocs.io/en/latest/#workflow-general-description)
 - [X] High-level description of how the software works is available [workflow](https://hi-friends-sdc2.readthedocs.io/en/latest/workflow/)
 - [ ] Documentation consists of clear, step-by-step instructions [workflow installation](https://hi-firends-sdc2.readthedocs.io/en/latest/installation/) [execution](https://hi-firends-sdc2.readthedocs.io/en/latest/execution/) [methodology](https://hi-firends-sdc2.readthedocs.io/en/latest/methodology/)
-- [ ] Documentation gives examples of what the user can see at each step e.g. screenshots or command-line excerpt
+- [ ] Documentation gives examples of what the user can see at each step e.g. screenshots or command-line excerpt [execution](https://hi-firends-sdc2.readthedocs.io/en/latest/execution/)
 - [ ] Documentation uses monospace fonts for command-line inputs and outputs, source code fragments, function names, class names etc
 - [X] Documentation is held under version control alongside the code [repository](https://github.com/HI-FRIENDS-SDC2/hi-friends)
 
