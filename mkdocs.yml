@@ -6,12 +6,12 @@ repo_url:
 nav:
     - Home: index.md
     - Methodology: methodology.md
-    - Workflow: workflow.md
+    - Workflow description: workflow.md
     - Workflow installation: installation.md
     - Execution: execution.md
-    - Documentation for developers: developers.md
     - SDC2 HI-FRIENDS participation: results.md
     - SDC2 reproducibility award: reproducibility.md
+    - Documentation for developers: developers.md
     - Acknowledgements: acknowledgements.md 
 
 
