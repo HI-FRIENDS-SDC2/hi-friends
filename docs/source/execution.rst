@@ -26,4 +26,4 @@ including the dataset to process. Run the pipeline with:
    python run.py
 
 Snapshots of what the user will see
-===================================
+-----------------------------------
