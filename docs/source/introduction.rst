@@ -1,5 +1,8 @@
+General description
+===================
+
 The SKA Data Challenge 2
-========================
+-----------------------------------
 
 These pages contain the documentation related to the software developed
 by the HI-FRIENDS team to analyse SKA simulated data to participate in
@@ -10,7 +13,7 @@ characterise the neutral hydrogen content of galaxies across a sky area
 of 20 square degrees.
 
 The HI-FRIENDS solution to the SDC2
-===================================
+-----------------------------------
 
 HI-FRIENDS is a team participating in the SDC2. The team has implemented
 a scientific workflow for processing the 1TB SKA simulated data cube and
