@@ -1,7 +1,6 @@
-# Workflow
+# Workflow Description
 
-
-# Workflow structure and products
+## Workflow definition diagrams
 
 The following diagram shows the rules executed by the workflow and their dependencies. Each rule is associated with the execution of either a python script, a jupyter notebook or a bash script.
 
@@ -44,7 +43,6 @@ workflow/
     └── split_subcube.py
 ```
 
-
 ## Output products
 
 All the outputs of the workflow are stored in `results`. This is the first level organization of the directories:
@@ -80,10 +78,6 @@ logs/
 │   ├── subcube_1.log
 │   ├── subcube_2.log
 │   └── subcube_3.log
-├── summary
-│   ├── dag.log
-│   ├── filegraph.log
-│   └── rulegraph.log
 └── visualize
     └── visualize.log
 ```
@@ -96,8 +90,8 @@ interim/
     ├── subcube_1.fits
     ├── subcube_2.fits
     └── subcube_3.fits
+    ...
 ```
-
 
 ## Snakemake execution and diagrams
 

@@ -14,13 +14,57 @@ The next step is to concatenate the individual catalogs in a main, unfiltered ca
 
 ## Data exploration
 
-We used different software to visualize the cube and related subproducts.
+We used different software to visualize the cube and related subproducts. In a general way, we used [CARTA](https://cartavis.org/) to display the cube, the subcubes or the cubelets, as well as they associated moment maps. This tool is not explicitly used by the pipeline, but it is good to have it available for data exploration. We also used python for further exploration of data and catalogs. In particular, we used `astropy` to access and operate with the fits data, and `pandas` to open and manipulate the catalogs. Several plots are produced by the different python scripts during the execution, and a final `visualization` step generates a Jupyter notebook with a summary of the most releveant plots.
+
+## Feedback from the workflow and logs
+
+Snakemake prompts a lot of the information in the terminal informing the user of what step is being executed and the percentage of completeness of the job. Snakemake keeps its own logs within the directory `.snakemake/logs/`. For example, this is how one of the executions starts:
+
+```
+Using shell: /bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Provided resources: bigfile=1
+Job stats:
+job                     count    min threads    max threads
+--------------------  -------  -------------  -------------
+all                         1              1              1
+concatenate_catalogs        1              1              1
+final_catalog               1              1              1
+run_sofia                  20             31             31
+sofia2cat                  20              1              1
+split_subcube              20              1              1
+visualize                   1              1              1
+total                      64              1             31
+```
+
+And then, each time a job is started, a summary of the job to be executed is shown. This gives you complete information of the state of the execution, and what and how is being executed at the moment. For example:
+
+```
+Finished job 107.
+52 of 64 steps (81%) done
+Select jobs to execute...
+
+[Sat Jul 31 20:39:04 2021]
+rule split_subcube:
+    input: /mnt/sdc2-datacube/sky_full_v2.fits, results/plots/coord_subcubes.csv, results/plots/subcube_grid.png
+    output: interim/subcubes/subcube_0.fits
+    log: results/logs/split_subcube/subcube_0.log
+    jobid: 4
+    wildcards: idx=0
+    resources: mem_mb=1741590, disk_mb=1741590, tmpdir=tmp, bigfile=1
+
+Activating conda environment: /mnt/scratch/sdc2/jmoldon/hi-friends/.snakemake/conda/cf5c913dcb805c1721a2716441032e71
+```
+
+Apart from the snakemake logs, the terminal also displays information of the script being executed. By default, we save the outputs and messages of all steps in 6 subdirectories inside `results/logs`. 
+
 
 ## Configuration
 
 The key parameters for the execution of the pipeline can be selected by editing the file `config/config.yaml`. In the general case, only this parameters file controls how the cube is gridded and how Sofia-2 is executed. The control parameters for Sofia-2 are directly controlled using the sofia par file template in `config/sofia_12.par`. The default configuration files can be found here: [config](../config/).
 
-## unit tests
+## Unit tests
 
 To verify the outputs of the different steps of the workflow, we implemented a series of python unit tests based on the steps defined by the snakemake rules. The unit test contain simple examples of inputs and outputs of each rule, so when the particular rule in executed, their outputs are compared byte by byte to the expected output. The tests are passed only when all the output files match exactly the expected ones. These test are useful to be confident that any changes introduced in the code during developement are producing the same results, preventing the developers to introduce bug inadvertently.
 
