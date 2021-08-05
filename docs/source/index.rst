@@ -16,7 +16,7 @@ Welcome to HI-FRIENDS SDC2's documentation!
    execution
    results
    reproducibility 
-   developers
+   modules
    acknowledgements
 
 
