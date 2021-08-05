@@ -1,5 +1,7 @@
 # Workflow installation 
 
+This sections starts with the list of the main software used by the workflow, and a detailed list of all the dependencies required to execute it. Please, note that it is not needed to install these dependencies because the workflow will that automatically. The instructions below descripbe how to install the workflow locally (just by installing snakemake with conda, and snakemake will take care of all the rest). There are also instructions to use the containerized version of the workflow, using either docker, singularity or podman.
+
 ## Dependencies
 
 The main software dependencies are: 
@@ -14,40 +16,46 @@ The main software dependencies are:
 
 The requirements of the HI-FRIENDS data challenge solution workflow are self-contained, and they will be retrieved and installed during execution using `conda`. To run the pipeline you need to have [snakemake](https://snakemake.readthedocs.io/en/stable/) installed. This can be obtained from the `environment.yml` file in the repository as explained in the next Section. The workflow uses the following packages:
 
+```
   - astropy=4.2.1
+  - astropy=4.3.post1
   - astroquery=0.4.1
   - astroquery=0.4.3
   - dask=2021.3.1
   - gitpython=3.1.18
+  - ipykernel=5.5.5
   - ipython=7.22.0
   - ipython=7.25.0
+  - ipython=7.26.0
   - jinja2=3.0.1
   - jupyter=1.0.0
   - jupyterlab=3.0.16
   - jupyterlab_pygments=0.1.2
   - matplotlib=3.3.4
-  - matplotlib=3.4.2
   - msgpack-python=1.0.2
   - networkx=2.6.1
   - numpy=1.20.1
   - numpy=1.20.3
-  - numpy=1.21.1
   - pandas=1.2.2
   - pandas=1.2.5
-  - pandas=1.3.0
   - pip=21.0.1
   - pygments=2.9.0
   - pygraphviz=1.7
+  - pylint=2.9.6
+  - pytest=6.2.4
   - python-wget=3.2
   - python=3.8.6
   - python=3.9.6
   - pyyaml=5.4.1
   - scipy=1.7.0
   - seaborn=0.11.1
-  - snakemake-minimal=6.6.1
+  - snakemake-minimal=6.5.3
   - sofia-2=2.3.0
   - spectral-cube=0.5.0
   - wget=1.20.1
+```
+
+This list can also be found in [all dependencies](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/docs/materials/all_dependencies.txt). The links where all the software can be found is in [all links](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/docs/materials/all_links.txt).
 
 It is not recommended to install them individually, because Snakemake will use conda internally to install the different environments included in this repository. This list is just for reference purposes.
 
