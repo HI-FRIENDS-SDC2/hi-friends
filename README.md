@@ -5,7 +5,7 @@ This repository contains the workflow used to find and characterize the HI sourc
 
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 [![fair-software.eu](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8B%20%20%E2%97%8F%20%20%E2%97%8B-orange)](https://fair-software.eu)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/HI-FRIENDS-SDC2/hi-friends/HEAD?urlpath=lab/tree/docs/materials/mybinder_execution.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/HI-FRIENDS-SDC2/hi-friends/HEAD?urlpath=lab/tree/docs/_static/mybinder_execution.ipynb)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 
 ## Summary

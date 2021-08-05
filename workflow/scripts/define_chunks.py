@@ -43,6 +43,7 @@ def get_args():
 
 def define_subcubes(steps, wcs, overlap, subcube_size_pix):
     '''Return an array with the coordinates of the subcubes
+
     Parameters
     ----------
     steps: int
@@ -76,6 +77,7 @@ def define_subcubes(steps, wcs, overlap, subcube_size_pix):
 
 def plot_subcubes(coord_subcubes, l_s='-', color=None, l_w=1):
     '''Plot subcubes
+
     Parameters
     ----------
     coord_subcubes: int
@@ -99,6 +101,7 @@ def plot_subcubes(coord_subcubes, l_s='-', color=None, l_w=1):
 
 def plot_border(wcs, n_pix):
     '''Plot boundaries of subcubes
+
     Parameters
     ----------
     wcs: class astropy.wcs
@@ -118,6 +121,7 @@ def plot_border(wcs, n_pix):
 def write_subcubes(steps, wcs, overlap, subcube_size_pix, coord_file):
     '''Return coordinates of subcubes. Save file `coord_file` in the results
     folder containing the coordinates of the subcubes
+
     Parameters
     ----------
     steps: int
@@ -143,6 +147,7 @@ def write_subcubes(steps, wcs, overlap, subcube_size_pix, coord_file):
 
 def plot_grid(wcs, coord_subcubes, grid_plot, n_pix):
     ''' Plot grid of subcubes
+
     Parameters
     ----------
     wcs: class astropy.wcs

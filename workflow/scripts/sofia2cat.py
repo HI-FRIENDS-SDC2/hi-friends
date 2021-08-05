@@ -50,6 +50,7 @@ def get_args():
 
 def read_sofia_header(filename):
     '''Reads SOFIA header
+
     Parameters
     ----------
     filename: str
@@ -67,6 +68,7 @@ def read_sofia_header(filename):
 def sofia2cat(catalog):
     '''Runs sofia and returns the raw catalog filtered with galaxies that have
        kinematic position angle greater than zero
+
     Parameters
     ----------
     catalog: str
@@ -88,6 +90,7 @@ def sofia2cat(catalog):
 def pix2coord(wcs, pix_x, pix_y):
     '''
     Converts pixels to coordinates using WCS header info
+
     Parameters
     ----------
     wcs: class astropy.wcs
@@ -110,6 +113,7 @@ def compute_inclination(bmaj, bmin):
     '''Computes inclinaton
     See A7) in http://articles.adsabs.harvard.edu/pdf/1992MNRAS.258..334S
     Note p has been implemented as varp and q has been implemented as vaarq
+
     Parameters
     ----------
     bmaj: float
@@ -131,6 +135,7 @@ def compute_inclination(bmaj, bmin):
 
 def convert_units(raw_cat, fitsfile):
     '''Convert units from raw catalog into fitsfile
+
     Parameters
     ----------
     raw_cat: pandas DataFrame
@@ -162,6 +167,7 @@ def convert_units(raw_cat, fitsfile):
 
 def frequency_to_vel(freq, invert=False):
     '''Convert frequency to velocity
+
     Parameters
     ----------
     freq: float
@@ -180,6 +186,7 @@ def frequency_to_vel(freq, invert=False):
     pix2freq: float
         Conversion factor from channel to Hz
     '''
+
     if not invert:
         return cspeed*((F0_H1**2-freq**2)/(F0_H1**2+freq**2))
     else:
@@ -188,6 +195,7 @@ def frequency_to_vel(freq, invert=False):
 def convert_flux(flux,filename):
     '''This assume that flux comes from SoFiA in Jy/beam and converts it
     to Jy * km/s base on the header
+
     Parameters
     ----------
     flux: array of floats
@@ -196,19 +204,20 @@ def convert_flux(flux,filename):
         Name of input file
     Returns
     -------
-    flux/pix_per_beam*cdelt_hz: array of floats
+    flux_jy_hz: array of floats
         flux in Jy*Hz
     '''
-
     hdr = fits.getheader(filename)
     print(hdr['BMAJ'],hdr['BMIN'])
     beamarea=(np.pi*abs(hdr['BMAJ']*hdr['BMIN']))/(4.*np.log(2.))
     pix_per_beam = beamarea/(abs(hdr['CDELT1'])*abs(hdr['CDELT2']))
     cdelt_hz = float(hdr['CDELT3'])
-    return flux/pix_per_beam*cdelt_hz    #Jy * hz
+    flux_jy_hz = flux/pix_per_beam*cdelt_hz    #Jy * hz
+    return flux_jy_hz
 
 def convert_frequency_axis(filename, outname, velocity_req = 'radio'):
     '''Convert the frequency axis of a cube
+
     Parameters
     ----------
     filename: str
@@ -273,6 +282,7 @@ def convert_frequency_axis(filename, outname, velocity_req = 'radio'):
 
 def process_catalog(raw_cat, fitsfile):
     '''Process catalog
+
     Parameters
     ----------
     raw_cat: pandas.DataFrame
@@ -340,6 +350,7 @@ def process_catalog(raw_cat, fitsfile):
 
 def find_fitsfile(parfile):
     """ Searchs in the parfile the name of the fits file used
+
     Parameters
     ----------
     parfile: str

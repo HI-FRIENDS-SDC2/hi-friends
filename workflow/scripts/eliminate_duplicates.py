@@ -37,6 +37,8 @@ def get_args():
 
 def read_ref_catalog(infile, name_list):
     '''Reads the catalog with the variables from an input string
+
+
     Parameters
     ----------
     infile: str
@@ -54,6 +56,7 @@ def read_ref_catalog(infile, name_list):
 
 def read_coordinates_from_table(cat):
     '''Reads coordinates from a table
+
     Parameters
     ----------
     cat: astropy.Table
@@ -74,6 +77,7 @@ def read_coordinates_from_table(cat):
 
 def find_catalog_duplicates(ras, dec, freq):
     '''Finds duplicates in the catalog
+
     Parameters
     ----------
     ras: float
@@ -101,6 +105,7 @@ def find_catalog_duplicates(ras, dec, freq):
 
 def mask_worse_duplicates(cond, idx, catalog_table):
     '''Finds worse duplicates and masks them
+
     Parameters
     ----------
     cond: Bool array

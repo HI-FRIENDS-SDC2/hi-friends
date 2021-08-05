@@ -62,7 +62,7 @@ Apart from the snakemake logs, the terminal also displays information of the scr
 
 ## Configuration
 
-The key parameters for the execution of the pipeline can be selected by editing the file `config/config.yaml`. In the general case, only this parameters file controls how the cube is gridded and how Sofia-2 is executed. The control parameters for Sofia-2 are directly controlled using the sofia par file template in `config/sofia_12.par`. The default configuration files can be found here: [config](../config/).
+The key parameters for the execution of the pipeline can be selected by editing the file `config/config.yaml`. In the general case, only this parameters file controls how the cube is gridded and how Sofia-2 is executed. The control parameters for Sofia-2 are directly controlled using the sofia par file template in `config/sofia_12.par`. The default configuration files can be found here: [config](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/config).
 
 ## Unit tests
 

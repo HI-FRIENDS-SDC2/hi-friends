@@ -18,8 +18,8 @@ Well-documented
 Easy to install 
 
 - [X] Full instructions provided for building and installing any software [workflow installation](https://hi-friends-sdc2.readthedocs.io/en/latest/installation/)
-- [X] All dependencies are listed, along with web addresses, suitable versions, licences and whether they are mandatory or optional  [workflow installation](https://hi-friends-sdc2.readthedocs.io/en/latest/installation/). List of all required [packages](materials/all_dependencies.txt) and their versions. [Links](materials/all_links.txt) to source code of each dependency including licenses.
-- [X] All dependencies are available. [Links](materials/all_links.txt) to source code of each dependency including licenses.
+- [X] All dependencies are listed, along with web addresses, suitable versions, licences and whether they are mandatory or optional  [workflow installation](https://hi-friends-sdc2.readthedocs.io/en/latest/installation/). List of all required [packages](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/docs/source/_static/all_dependencies.txt) and their versions. [Links](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/docs/source/_static/all_links.txt) to source code of each dependency including licenses.
+- [X] All dependencies are available. [Links](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/docs/source/_static/all_links.txt) to source code of each dependency including licenses.
 - [X] Tests are provided to verify that the installation has succeeded. [Unit tests](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/.tests/unit), [info unit tests](https://hi-friends-sdc2.readthedocs.io/en/latest/methodology/#unit-tests)
 - [X] A containerised package is available, containing the code together with all of the related configuration files, libraries, and dependencies required. Using e.g. Docker/Singularity [docker](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/deploy.docker), [singularity](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/deploy.singularity)
 

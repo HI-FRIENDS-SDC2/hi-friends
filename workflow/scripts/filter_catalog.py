@@ -38,6 +38,7 @@ def get_args():
 
 def arcsec2kpc(redshift, theta):
     '''Converts angular size to linear size given a redshift
+
     Parameters
     ----------
     redshift: float
@@ -56,6 +57,7 @@ def arcsec2kpc(redshift, theta):
 
 def compute_d_m(cat):
     '''Computes the Mass of HI and linear diameter of the galaxies in a catalog
+
     Parameters
     ----------
     cat: pandas.DataFrame

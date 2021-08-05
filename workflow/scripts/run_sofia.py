@@ -56,6 +56,7 @@ def update_parfile(parfile, output_path, datacube,
               scfind_threshold, reliability_fmin,
               reliability_threshold):
     '''Updates file with paramenters
+
     Parameters
     ----------
     parfile: str
@@ -88,6 +89,7 @@ def update_parfile(parfile, output_path, datacube,
 
 def eliminate_time(cat):
     '''Eliminates timestamp from sofia catalog. Updates the file
+
     Parameters
     ----------
     cat: str
@@ -111,6 +113,7 @@ def run_sofia(parfile, outname, datacube, results_path,
               scfind_threshold, reliability_fmin,
               reliability_threshold):
     """Only runs Sofia if the output catalog  does not exist
+
     Parameters
     ----------
     parfile: str
