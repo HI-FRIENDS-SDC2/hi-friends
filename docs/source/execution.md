@@ -51,7 +51,12 @@ Before each step is started, there is a summary of what will be executed and whi
 After the pipeline is finished, `snakemake` is executed 3 more times to produce the workflow diagrams and an HTML report:
 ![image](https://user-images.githubusercontent.com/1053066/128488905-d46662ca-fe90-4721-b083-e574b0d499e6.png)
 
-This is how your directory looks after the execution. All the results are stored in `results` following the structure described in [Output products](workflow.html#output-products). The `interim` directory contains subcube fits file, which can be removed to save space.
+This is how your directory looks after the execution.
+
+![image](https://user-images.githubusercontent.com/1053066/128523450-a1631e7a-66b8-4b43-bf7d-390575b5da0c.png)  
+
+
+All the results are stored in `results` following the structure described in [Output products](workflow.html#output-products). The `interim` directory contains subcube fits file, which can be removed to reduce used space.
 
 ## Execution on a data cube
 
