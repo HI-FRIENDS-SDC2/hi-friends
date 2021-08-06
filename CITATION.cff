@@ -5,6 +5,6 @@ authors:
     given-names: Moldon
     orcid: https://orcid.org/0000-0002-8079-7608
 title: "HI-FRIENDS participation in the SKA Data Challenge 2"
-version: 0.0.1
-doi: 
-date-released: 
+version: 1.0.1
+doi: https://doi.org/10.5281/zenodo.5167659
+date-released: 2021-07-06
