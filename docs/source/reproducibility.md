@@ -7,8 +7,8 @@ In this section we provide links for earch item in the reproducibility award che
 
 Well-documented 
 
-- [X] High-level description of what/who the software is for is available [the HI-FRIENDS solution to the SDC2](https://hi-friends-sdc2.readthedocs.io/en/latest/#the-hi-friends-solution-to-the-sdc2)
-- [X] High-level description of what the software does is available [software general description](https://hi-friends-sdc2.readthedocs.io/en/latest/#workflow-general-description)
+- [X] High-level description of what/who the software is for is available [the HI-FRIENDS solution to the SDC2](https://hi-friends-sdc2.readthedocs.io/en/latest/introduction.html#the-hi-friends-solution-to-the-sdc2)
+- [X] High-level description of what the software does is available [software general description](https://hi-friends-sdc2.readthedocs.io/en/latest/introduction.html#workflow-general-description)
 - [X] High-level description of how the software works is available [workflow](https://hi-friends-sdc2.readthedocs.io/en/latest/execution.html#)
 - [X] Documentation consists of clear, step-by-step instructions [workflow installation](https://hi-friends-sdc2.readthedocs.io/en/latest/installation.html#) [execution](https://hi-friends-sdc2.readthedocs.io/en/latest/execution.html) [methodology](https://hi-friends-sdc2.readthedocs.io/en/latest/methodology.html)
 - [X] Documentation gives examples of what the user can see at each step e.g. screenshots or command-line excerpt [execution](https://hi-friends-sdc2.readthedocs.io/en/latest/execution.html)
@@ -17,9 +17,9 @@ Well-documented
 
 Easy to install 
 
-- [X] Full instructions provided for building and installing any software [workflow installation](https://hi-friends-sdc2.readthedocs.io/en/latest/installation/)
-- [X] All dependencies are listed, along with web addresses, suitable versions, licences and whether they are mandatory or optional  [workflow installation](https://hi-friends-sdc2.readthedocs.io/en/latest/installation/). List of all required [packages](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/docs/source/_static/all_dependencies.txt) and their versions. [Links](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/docs/source/_static/all_links.txt) to source code of each dependency including licenses.
-- [X] All dependencies are available. [Links](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/docs/source/_static/all_links.txt) to source code of each dependency including licenses.
+- [X] Full instructions provided for building and installing any software [workflow installation](https://hi-friends-sdc2.readthedocs.io/en/latest/installation.html#)
+- [X] All dependencies are listed, along with web addresses, suitable versions, licences and whether they are mandatory or optional  [workflow installation](https://hi-friends-sdc2.readthedocs.io/en/latest/installation.html#). List of all required [packages](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/docs/source/_static/all_dependencies.txt) and their versions. [Links](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/docs/source/_static/all_links.txt) to source code of each dependency including licenses when downloaded.
+- [X] All dependencies are available. [Links](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/docs/source/_static/all_links.txt) to source code of each dependency including licenses when downloaded.
 - [X] Tests are provided to verify that the installation has succeeded. [Unit tests](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/.tests/unit), [info unit tests](https://hi-friends-sdc2.readthedocs.io/en/latest/methodology/#unit-tests)
 - [X] A containerised package is available, containing the code together with all of the related configuration files, libraries, and dependencies required. Using e.g. Docker/Singularity [docker](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/deploy.docker), [singularity](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/deploy.singularity)
 
