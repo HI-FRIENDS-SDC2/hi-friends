@@ -76,6 +76,8 @@ The repository documentation can be found in the [HI-FRIENDS SDC2](https://hi-fr
 
 ## Contributing
 
+More details in [CONTRIBUTING.MD](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/CONTRIBUTING.md). Summary here:
+
 ### Coding
 
 Nothing fancy here, just:
@@ -88,7 +90,7 @@ Nothing fancy here, just:
 - Make sure existing tests pass
 - Make sure your new code is properly tested and fully-covered
 - Following [The seven rules of a great Git commit message](https://chris.beams.io/posts/git-commit/#seven-rules) is highly encouraged
-- When adding a new feature, branch from [master-branch](<project-master-branch>)
+- When adding a new feature, branch from [master-branch](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master)
 
 
 ### Testing
@@ -98,4 +100,3 @@ As mentioned above, existing tests must pass and new features are required to be
 ### Documenting
 
 Code should be self-documented. But, in case there is any code that may be hard to understand, it must include some comments to make it easier to review and maintain later on.
-
