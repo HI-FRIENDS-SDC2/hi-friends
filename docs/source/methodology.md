@@ -110,12 +110,13 @@ For more information on Pylint installation see [Pylint installation](https://py
 
 We runned Pylint in our source code. Most of the code extrictly complies with python coding standards. The final `pylint` score of the code is:
 
-```
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
-Your code has been rated at 1.33/10 (previous run: 1.33/10, +0.00)
-Your code has been rated at 5.73/10 (previous run: 5.74/10, +0.00)
-Your code has been rated at 9.39/10 (previous run: 9.39/10, +0.00)
-Your code has been rated at 9.24/10 (previous run: 9.24/10, +0.00)
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
-```
+<img width="1242" alt="image" src="https://user-images.githubusercontent.com/22152978/128498513-2c7a1a58-b019-4ea1-b017-d6f38b5ea4e8.png">
+<img width="1300" alt="image" src="https://user-images.githubusercontent.com/22152978/128497320-c2d97f7f-a1cf-4251-a7c9-edff83fa20d5.png">
+<img width="1228" alt="image" src="https://user-images.githubusercontent.com/22152978/128497523-80b5a687-74c7-46ca-9fae-b9b69da1895c.png">
+<img width="1192" alt="image" src="https://user-images.githubusercontent.com/22152978/128498278-8070f6c5-c556-4cd9-8777-89f73061b543.png">
+<img width="1298" alt="image" src="https://user-images.githubusercontent.com/22152978/128497835-840442f0-e562-4166-b39b-c894a7a68c1e.png">
+<img width="1252" alt="image" src="https://user-images.githubusercontent.com/22152978/128497942-96d10ad8-90fe-4461-9291-7f4fdf5acc3e.png">
+
+
+
 
