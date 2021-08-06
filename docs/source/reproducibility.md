@@ -9,10 +9,10 @@ Well-documented
 
 - [X] High-level description of what/who the software is for is available [the HI-FRIENDS solution to the SDC2](https://hi-friends-sdc2.readthedocs.io/en/latest/#the-hi-friends-solution-to-the-sdc2)
 - [X] High-level description of what the software does is available [software general description](https://hi-friends-sdc2.readthedocs.io/en/latest/#workflow-general-description)
-- [X] High-level description of how the software works is available [workflow](https://hi-friends-sdc2.readthedocs.io/en/latest/workflow/)
-- [X] Documentation consists of clear, step-by-step instructions [workflow installation](https://hi-friends-sdc2.readthedocs.io/en/latest/installation/) [execution](https://hi-friends-sdc2.readthedocs.io/en/latest/execution/) [methodology](https://hi-friends-sdc2.readthedocs.io/en/latest/methodology/)
-- [ ] Documentation gives examples of what the user can see at each step e.g. screenshots or command-line excerpt [execution](https://hi-friends-sdc2.readthedocs.io/en/latest/execution/)
-- [ ] Documentation uses monospace fonts for command-line inputs and outputs, source code fragments, function names, class names etc
+- [X] High-level description of how the software works is available [workflow](https://hi-friends-sdc2.readthedocs.io/en/latest/execution.html#)
+- [X] Documentation consists of clear, step-by-step instructions [workflow installation](https://hi-friends-sdc2.readthedocs.io/en/latest/installation.html#) [execution](https://hi-friends-sdc2.readthedocs.io/en/latest/execution.html) [methodology](https://hi-friends-sdc2.readthedocs.io/en/latest/methodology.html)
+- [X] Documentation gives examples of what the user can see at each step e.g. screenshots or command-line excerpt [execution](https://hi-friends-sdc2.readthedocs.io/en/latest/execution.html)
+- [X] Documentation uses monospace fonts for command-line inputs and outputs, source code fragments, function names, class names etc [workflow installation](https://hi-friends-sdc2.readthedocs.io/en/latest/installation.html#) [execution](https://hi-friends-sdc2.readthedocs.io/en/latest/execution.html) [developers](https://hi-friends-sdc2.readthedocs.io/en/latest/modules.html)
 - [X] Documentation is held under version control alongside the code [repository](https://github.com/HI-FRIENDS-SDC2/hi-friends)
 
 Easy to install 
@@ -40,7 +40,7 @@ Have easily accessible source code
 
 - [X] Access to source code repository is available online [repository](https://github.com/HI-FRIENDS-SDC2/hi-friends)
 - [X] Repository is hosted externally in a sustainable third-party repository e.g. SourceForge, LaunchPad, GitHub: Introduction to GitHub [repository](https://github.com/HI-FRIENDS-SDC2/hi-friends)
-- [ ] Documentation is provided for developers
+- [X] Documentation is provided for developers [developers](https://hi-friends-sdc2.readthedocs.io/en/latest/modules.html) 
 
 Adhere to coding standards 
 
