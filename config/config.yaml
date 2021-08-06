@@ -11,7 +11,7 @@ incube: '/mnt/sdc2-datacube/sky_full_v2.fits'
 subcube_id: 'all'
 coord_file: results/catalogs/coord_subcubes.csv
 grid_plot: results/plots/subcube_grid.png
-num_subcubes: 4
+num_subcubes: 36
 pixel_overlap: 40
 
 # Sofia
