@@ -26,6 +26,11 @@ For details on installing and using HI-FRIENDS, please visit the documentation: 
 We are using GNU General Public License v3.0. See full license [here](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/LICENSE).
 ![image](https://user-images.githubusercontent.com/1053066/128527855-268a552d-108d-4920-9067-358098eb8f24.png)
 
+## Citation
+
+Please, use this reference (resolves to most recent version in Zenodo): https://doi.org/10.5281/zenodo.5167659
+
+
 ## Documentation
 
 The repository documentation can be found in the [HI-FRIENDS SDC2](https://hi-friends-sdc2.readthedocs.io/en/latest/) webpage where you can find details on:
