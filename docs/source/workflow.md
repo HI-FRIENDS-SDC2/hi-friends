@@ -6,7 +6,7 @@ The following diagram shows the rules executed by the workflow and their depende
 
 ![rulegraph](figures/rulegraph.svg)
 
-The actual execution of the workflow requires some of the rules to be executed multiple times. In particular each subcube is processed sequentially. The next diagram shows the [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph) of an example execution. The number of parallel jobs is variable, here we show the case of 16 subcubes, although for the full SDC2 cube we may use 36 or 49 subcubes.
+The actual execution of the workflow requires some of the rules to be executed multiple times. In particular each subcube is processed sequentially. The next diagram shows the [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph) of an example execution. The number of parallel jobs is variable, here we show the case of 9 subcubes, although for the full SDC2 cube we may use 36 or 49 subcubes.
 
 ![dag](figures/dag.svg)
 
@@ -22,25 +22,28 @@ The workflow consists of a master `Snakefile` file (analogous to a Makefile for 
 workflow/
 ├── Snakefile
 ├── envs
-│   ├── analysis.yml
-│   ├── chunk_data.yml
-│   ├── process_data.yml
-│   ├── snakemake.yml
-│   └── xmatch_catalogs.yml
+│   ├── analysis.yml
+│   ├── chunk_data.yml
+│   ├── filter_catalog.yml
+│   ├── process_data.yml
+│   ├── snakemake.yml
+│   └── xmatch_catalogs.yml
 ├── notebooks
-│   └── sdc2_hi-friends.ipynb
+│   └── sdc2_hi-friends.ipynb
 ├── rules
-│   ├── chunk_data.smk
-│   ├── concatenate_catalogs.smk
-│   ├── run_sofia.smk
-│   ├── summary.smk
-│   └── visualize_products.smk
-└── scripts
-    ├── define_chunks.py
-    ├── eliminate_duplicates.py
-    ├── run_sofia.py
-    ├── sofia2cat.py
-    └── split_subcube.py
+│   ├── chunk_data.smk
+│   ├── concatenate_catalogs.smk
+│   ├── run_sofia.smk
+│   ├── summary.smk
+│   └── visualize_products.smk
+├── scripts
+│   ├── define_chunks.py
+│   ├── eliminate_duplicates.py
+│   ├── filter_catalog.py
+│   ├── run_sofia.py
+│   ├── sofia2cat.py
+│   └── split_subcube.py
+
 ```
 
 ## Output products
@@ -60,7 +63,8 @@ In particular, each rule generates a log for the execution of the scripts. They 
 logs/
 ├── concatenate
 │   ├── concatenate_catalogs.log
-│   └── eliminate_duplicates.log
+│   ├── eliminate_duplicates.log
+│   └── filter_catalog.log
 ├── define_chunks
 │   └── define_chunks.log
 ├── run_sofia
