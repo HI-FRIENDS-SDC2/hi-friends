@@ -20,14 +20,14 @@ Easy to install
 - [X] Full instructions provided for building and installing any software [workflow installation](https://hi-friends-sdc2.readthedocs.io/en/latest/installation.html#)
 - [X] All dependencies are listed, along with web addresses, suitable versions, licences and whether they are mandatory or optional  [workflow installation](https://hi-friends-sdc2.readthedocs.io/en/latest/installation.html#). List of all required [packages](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/docs/source/_static/all_dependencies.txt) and their versions. [Links](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/docs/source/_static/all_links.txt) to source code of each dependency including licenses when downloaded.
 - [X] All dependencies are available. [Links](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/docs/source/_static/all_links.txt) to source code of each dependency including licenses when downloaded.
-- [X] Tests are provided to verify that the installation has succeeded. [Unit tests](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/.tests/unit), [info unit tests](https://hi-friends-sdc2.readthedocs.io/en/latest/methodology/#unit-tests)
+- [X] Tests are provided to verify that the installation has succeeded. [Unit tests](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/.tests/unit), [info unit tests](https://hi-friends-sdc2.readthedocs.io/en/latest/methodology.html#unit-tests)
 - [X] A containerised package is available, containing the code together with all of the related configuration files, libraries, and dependencies required. Using e.g. Docker/Singularity [docker](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/deploy.docker), [singularity](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/deploy.singularity)
 
 Easy to use 
 
-- [X] A getting started guide is provided outlining a basic example of using the software e.g. a README file [Docs: execution](https://hi-friends-sdc2.readthedocs.io/en/latest/installation/)
-- [X] Instructions are provided for many basic use cases. [Docs: execution](https://hi-friends-sdc2.readthedocs.io/en/latest/installation/)
-- [X] Reference guides are provided for all command-line, GUI and configuration options. [Docs: execution](https://hi-friends-sdc2.readthedocs.io/en/latest/installation/)
+- [X] A getting started guide is provided outlining a basic example of using the software e.g. a README file [execution](https://hi-friends-sdc2.readthedocs.io/en/latest/execution.html)
+- [X] Instructions are provided for many basic use cases. [execution on a data cube](https://hi-friends-sdc2.readthedocs.io/en/latest/execution.html#execution-on-a-data-cube)
+- [X] Reference guides are provided for all command-line, GUI and configuration options. [basic usage](https://hi-friends-sdc2.readthedocs.io/en/latest/execution.html#basic-usage-and-verification-of-the-workflow) [execution on a data cube](https://hi-friends-sdc2.readthedocs.io/en/latest/execution.html#execution-on-a-data-cube)
 
 
 Open licence 
@@ -47,9 +47,9 @@ Adhere to coding standards
 - [X] Source code is laid out and indented well [source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
 - [X] Source code is commented [source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
 - [X] There is no commented out code [source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
-- [X] Source code is structured into modules or packages [source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
+- [X] Source code is structured into modules or packages [source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts) [workflow file structure](https://hi-friends-sdc2.readthedocs.io/en/latest/workflow.html#workflow-file-structure) [developers](https://hi-friends-sdc2.readthedocs.io/en/latest/modules.html)
 - [X] Source code uses sensible class, package and variable names [source code](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/workflow/scripts)
-- [X] Source code structure relates clearly to the architecture or design [workflow](https://hi-friends-sdc2.readthedocs.io/en/latest/workflow/#workflow-file-structure)
+- [X] Source code structure relates clearly to the architecture or design [workflow file structure](https://hi-friends-sdc2.readthedocs.io/en/latest/workflow/#workflow-file-structure)
 
 Utilise tests 
 
