@@ -237,17 +237,8 @@ def convert_frequency_axis(filename, outname, velocity_req = 'radio'):
         return
 
     # get central values
-    crpix = float(hdr['CRPIX3'])
     crval = float(hdr['CRVAL3'])
     naxis_len = float(hdr['NAXIS3'])
-    # make sure the central pixel is rather central else large errors
-    # are introduce in both vrad and rel. Check previuos versios of the code
-    # if naxis_len/2.-5 < crpix <  naxis_len/2.+5:
-    #     hdr_wcs = WCS(hdr)
-    #     centralx,centraly, new_freq = hdr_wcs.pix2world([hdr['CRPIX1'], \
-    #                                          hdr['CRPIX2'],naxis_len/2.],1)
-    #     # Might need this hdr['CRPIX3'] = new_pix
-    #     crval = new_freq
     #Now convert
     if velocity_req == 'radio':
       # convert from frequency to radio velocity
@@ -288,7 +279,7 @@ def process_catalog(raw_cat, fitsfile):
     raw_cat: pandas.DataFrame
         Raw catalog
     fitsfile: str
-        Path to fits file of processed data cube 
+        Path to fits file of processed data cube
     Returns
     -------
     processed_cat: pandas.DataFrame

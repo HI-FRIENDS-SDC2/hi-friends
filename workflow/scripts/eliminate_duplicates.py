@@ -113,7 +113,7 @@ def mask_worse_duplicates(cond, idx, catalog_table):
     idx: int array
          Index of the duplicated sources
     catalog_table: astropy.Table
-        table with 
+        table with detections
     Returns
     -------
     duplicates: Bool array

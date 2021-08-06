@@ -97,13 +97,11 @@ def eliminate_time(cat):
     '''
     # Read in the file
     with open(cat, 'r') as infile :
-      lines = infile.readlines()
-    
+        lines = infile.readlines()
     # Replace the target string
     for i, line in enumerate(lines):
         if line[:7] == '# Time:':
             lines[i] = '# Time:\n'
-
     # Write the file out again
     with open(cat, 'w') as infile:
         for i in lines:

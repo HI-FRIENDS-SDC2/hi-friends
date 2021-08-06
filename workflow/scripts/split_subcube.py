@@ -56,7 +56,6 @@ def split_subcube(infile, coord_subcubes, idx):
     cube = SpectralCube.read(infile)
     sub_cube = cube.subcube(xlo=cidx[0]*u.deg, xhi=cidx[2]*u.deg,
                             ylo=cidx[1]*u.deg, yhi=cidx[3]*u.deg)
-    #sub_cube.write(f'interim/subcubes/subcube_{idx:02d}.fits')
     sub_cube.write(f'interim/subcubes/subcube_{idx}.fits')
 
 def main():
