@@ -1,11 +1,5 @@
 # SDC2 HI-FRIENDS results
 
-## Score
-
-The result obtained by the HI-FRIENDS team can be seen in the figure below which comes from the [leaderboard](https://sdc2.astronomers.skatelescope.org/sdc2-challenge/leaderboard) section in the SDC2 website. 
-
-![leaderboard](figures/leaderboard.png)
-
 ## Our solution
 
 For our solution we used this configuration file:
@@ -37,12 +31,12 @@ reliability_threshold: 0.5
 The 36 subcubes were gridded following this pattern:
 ![Example of subcube grid](figures/subcube_grid.png)
 
-The distribution of sources in the sky were:
+The distribution of sources in the sky was:
 ![Detected catalog](figures/sky_detected_sources.png)
 
 We detected 22346 sources (once duplicates in the overlapping regions are removed).
 
-This is the distribution of parameters in our catalog (blue), and how does it compare with the truth catalog of the large development cube (in grey), which covers a smaller area and therefore contain fewer sources.
+This is the distribution of parameters in our catalog (blue), and how does it compare with the truth catalog of the large development cube (in grey), which covers a smaller area and therefore contains fewer sources. Please, note the different binning and the log scale used in some cases.
 
 ![Parameters distribution](figures/output_params_distribution.png)
 
@@ -52,3 +46,8 @@ We then filtered the catalog to exclude sources that deviate significantly from 
 
 These results will be uploaded to Zenodo.
 
+## Score
+
+The solution presented by HI-FRIENDS obtained a total score of 13902.62 points in the challenge. This is the final [leaderboard](https://sdc2.astronomers.skatelescope.org/sdc2-challenge/leaderboard) from the SDC2 website. 
+
+![leaderboard](figures/leaderboard.png)

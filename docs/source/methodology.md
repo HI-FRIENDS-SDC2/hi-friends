@@ -14,11 +14,11 @@ The next step is to concatenate the individual catalogs in a main, unfiltered ca
 
 ## Data exploration
 
-We used different software to visualize the cube and related subproducts. In a general way, we used [CARTA](https://cartavis.org/) to display the cube, the subcubes or the cubelets, as well as they associated moment maps. This tool is not explicitly used by the pipeline, but it is good to have it available for data exploration. We also used python for further exploration of data and catalogs. In particular, we used `astropy` to access and operate with the fits data, and `pandas` to open and manipulate the catalogs. Several plots are produced by the different python scripts during the execution, and a final `visualization` step generates a Jupyter notebook with a summary of the most releveant plots.
+We used different software to visualize the cube and related subproducts. In a general way, we used [CARTA](https://cartavis.org/) to display the cube, the subcubes or the cubelets, as well as they associated moment maps. This tool is not explicitly used by the pipeline, but it is good to have it available for data exploration. We also used `python` libraries for further exploration of data and catalogs. In particular, we used `astropy` to access and operate with the fits data, and `pandas` to open and manipulate the catalogs, `matplotlib` for visualization. Several plots are produced by the different python scripts during the execution, and a final `visualization` step generates a Jupyter notebook with a summary of the most releveant plots.
 
 ## Feedback from the workflow and logs
 
-Snakemake prompts a lot of the information in the terminal informing the user of what step is being executed and the percentage of completeness of the job. Snakemake keeps its own logs within the directory `.snakemake/logs/`. For example, this is how one of the executions starts:
+[snakemake](https://snakemake.readthedocs.io/en/stable/) prompts a lot of the information in the terminal informing the user of what step is being executed and the percentage of completeness of the job. [snakemake](https://snakemake.readthedocs.io/en/stable/) keeps its own logs within the directory `.snakemake/logs/`. For example, this is how one of the executions starts:
 
 ```
 Using shell: /bin/bash
@@ -57,18 +57,18 @@ rule split_subcube:
 Activating conda environment: /mnt/scratch/sdc2/jmoldon/hi-friends/.snakemake/conda/cf5c913dcb805c1721a2716441032e71
 ```
 
-Apart from the snakemake logs, the terminal also displays information of the script being executed. By default, we save the outputs and messages of all steps in 6 subdirectories inside `results/logs`. 
+Apart from the snakemake logs, the terminal also displays information of the script being executed. By default, we save the outputs and messages of all steps in 6 subdirectories inside `results/logs` (see [Output products](https://hi-friends-sdc2.readthedocs.io/en/latest/workflow.html#output-products) for more details).
 
 
 ## Configuration
 
-The key parameters for the execution of the pipeline can be selected by editing the file `config/config.yaml`. In the general case, only this parameters file controls how the cube is gridded and how Sofia-2 is executed. The control parameters for Sofia-2 are directly controlled using the sofia par file template in `config/sofia_12.par`. The default configuration files can be found here: [config](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/config).
+The key parameters for the execution of the pipeline can be selected by editing the file `config/config.yaml`. This parameters file controls how the cube is gridded and how [Sofia-2](https://github.com/SoFiA-Admin/SoFiA-2) is executed, among other options. The control parameters for Sofia-2 are directly controlled using the sofia par file. The template we use by default can be found in `config/sofia_12.par`. All the default configuration files can be found here: [config](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/config).
 
 ## Unit tests
 
-To verify the outputs of the different steps of the workflow, we implemented a series of python unit tests based on the steps defined by the snakemake rules. The unit test contain simple examples of inputs and outputs of each rule, so when the particular rule in executed, their outputs are compared byte by byte to the expected output. The tests are passed only when all the output files match exactly the expected ones. These test are useful to be confident that any changes introduced in the code during developement are producing the same results, preventing the developers to introduce bug inadvertently.
+To verify the outputs of the different steps of the workflow, we implemented a series of python unit tests based on the steps defined by the snakemake rules. The unit test contain simple examples of inputs and outputs of each rule, so when the particular rule in executed, their outputs are compared byte by byte to the expected output. The tests are passed only when all the output files match exactly the expected ones. These tests are useful to be confident that any changes introduced in the code during developement are producing the same results, preventing the developers to introduce bugs inadvertently.
 
-We executed the tests on [myBinder](https://mybinder.org/), which automatically installs all the dependencies. We run this single command and obtained the following output:
+As an example, we used [myBinder](https://mybinder.org/) to verify the scripts. The pipeline is installed automatically by [myBinder](https://mybinder.org/). We executed the single command `python -m pytest .tests/unit/` and obtained the following output:
 ```
 jovyan@jupyter-hi-2dfriends-2dsdc2-2dhi-2dfriends-2dfsc1x4x2:~$ python -m pytest .tests/unit/
 =================================================================== test session starts ===================================================================
@@ -86,18 +86,19 @@ collected 6 items
 
 ============================================================== 6 passed in 206.24s (0:03:26) ==============================================================
 ```
+This demonstrates that the workflow can be executed flawlessly in any platform, even with an unattended deployment as offered by [myBinder](https://mybinder.org/).
+
 
 ## Software managed and containerization
 
-As explained above, the workflow is managed using snakemake, which means that all the dependencies are automatically created and organized by snakemake using `conda`. Each rule has its own conda environment file, which is installed in a local conda environment when the workflow starts. The environments are being activated as required by the rules. This allows us to use the exact software versions for each step, without any conflict. All the software used is available for download from [Anaconda](https://anaconda.org/). The only conflict with this approach is that Sofia-2 has not yet created a conda package for version 2.3.0 compatible with Mac, so this approach will not work in MacOS. To facilitate correct usage from any platform, we have also containerized the workflow.
+As explained above, the workflow is managed using [snakemake](https://snakemake.readthedocs.io/en/stable/), which means that all the dependencies are automatically created and organized by snakemake using `conda`. Each rule has its own conda environment file, which is installed in a local conda environment when the workflow starts. The environments are activated as required by the rules. This allows us to use the exact software versions for each step, without any conflict. We recommend that each rule uses its own small and individual environment, which is very convenient when maintaining or upgrading parts of the workflow. All the software used is available for download from [Anaconda](https://anaconda.org/).
 
-We have used different container formats to encapsulate the workflow. In particular, we have definition files for Docker, Singularity and podman container formats. The Github repository contains the required files, and instructions to build and use the containers can be found in the [installation instructions](installation.md).
-
+At the time of this release, the only conflict with this approach is that [Sofia-2](https://github.com/SoFiA-Admin/SoFiA-2) has not yet created a conda package for version 2.3.0 that is compatible with Mac, so this approach will not work in MacOS. To facilitate correct usage from any platform, we have also containerized the workflow. We have used different container formats to encapsulate the workflow. In particular, we have definition files for Docker, Singularity and podman container formats. The Github repository contains the required files, and instructions to build and use the containers can be found in the [installation instructions](installation.md).
 
 
 ## Check conformance to coding standards 
 
-Pylint is a Python static code analysis tool which looks for programming errors, helps enforcing a coding standard and looks for code smells (see [Pylint documentation](http://pylint.pycqa.org/). 
+[Pylint](https://pylint.org/) is a Python static code analysis tool which looks for programming errors, helps enforcing a coding standard and looks for code smells (see [Pylint documentation](http://pylint.pycqa.org/). 
 It can be installed by running 
 ```
 pip install pylint
