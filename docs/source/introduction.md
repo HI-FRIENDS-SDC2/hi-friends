@@ -10,7 +10,7 @@ The [HI-FRIENDS Github repository](https://github.com/HI-FRIENDS-SDC2/hi-friends
 
 ## Workflow general description
 
-The workflow is managed and executed using [snakemake](https://snakemake.readthedocs.io/en/stable/) workflow management system. It uses `spectral-cube` based on `dask` parallelization tool and `astropy` suite to divide the large cube in smaller pieces. On each of the subcubes, we execute [Sofia-2](https://github.com/SoFiA-Admin/SoFiA-2) for masking the subcubes, find sources and characterize their properties. Finally, the individual catalogs are cleaned, concatenated into a single catalog, and duplicates from the overlapping regions are eliminated. The catalog is filtered based on the physical properties of the sources to exclude some outliers. Some diagnostic plots are produced using Jupyter notebook. Specific details on how the workflows work can be find in the [Workflow](workflow.md) section.
+The details on the approach of our solution is described in the [Methodology](methodology.md) section. The workflow is managed and executed using [snakemake](https://snakemake.readthedocs.io/en/stable/) workflow management system. It uses `spectral-cube` based on `dask` parallelization tool and `astropy` suite to divide the large cube in smaller pieces. On each of the subcubes, we execute [Sofia-2](https://github.com/SoFiA-Admin/SoFiA-2) for masking the subcubes, find sources and characterize their properties. Finally, the individual catalogs are cleaned, concatenated into a single catalog, and duplicates from the overlapping regions are eliminated. The catalog is filtered based on the physical properties of the sources to exclude some outliers. Some diagnostic plots are produced using Jupyter notebook. Specific details on how the workflow works can be find in the [Workflow](workflow.md) section. The workflow is general purpose, but the results from the execution on thte SDC2 data cube are summarized in the [SDC2 HI-FRIENDS results](results.md) section.
 
 
 ## The HI-FRIENDS team 
@@ -29,6 +29,7 @@ The workflow is managed and executed using [snakemake](https://snakemake.readthe
 - Isabel Márquez - Instituto de Astrofísica de Andalucía, CSIC
 - Javier Moldón - Instituto de Astrofísica de Andalucía, CSIC
 - Mamta Pandey-Pommier - Centre  de  Recherche  Astrophysique  de  Lyon,  Observatoire  deLyon
+- Manuel Parra - Instituto de Astrofísica de Andalucía, CSIC
 - José Sabater - University of Edinburgh
 - Susana Sánchez - Instituto de Astrofísica de Andalucía, CSIC
 - Amidou Sorgho - Instituto de Astrofísica de Andalucía, CSIC
