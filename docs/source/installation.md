@@ -268,14 +268,14 @@ python run.py
 
 ## Use tarball of the workflow
 
-This solution only works with Linux environments. It has been tested in Ubuntu 20.04. First, download the tarball from Zenodo (link TBD).
+[This tarball file](https://zenodo.org/record/5167693/files/hi-friends-sdc2-workflow.tar.gz?download=1) is a self-contained workflow archive produced by snakemake containing the code, the config files, and all software packages of each defined conda environment are included. This only works in Linux, tried on Ubuntu 20.04.
 
 You will need to have snakemake installed. You can install it with `conda` using this [environment.yml](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/environment.yml). More information can be found in [above](https://hi-friends-sdc2.readthedocs.io/en/latest/installation.html#get-the-pipeline-and-install-snakemake).
 
-Once you have the tarball and snakemake running, you can do:
+Once you have the tarball and snakemake available, you can do:
 
 ```bash
-tar xvfz my-workflow.tar.gz
+tar -xf hi-friends-sdc2-workflow.tar.gz
 conda activate snakemake
 snakemake -n
 ```
