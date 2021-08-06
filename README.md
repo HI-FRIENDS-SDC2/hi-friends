@@ -1,12 +1,12 @@
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 [![fair-software.eu](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8B%20%20%E2%97%8F%20%20%E2%97%8B-orange)](https://fair-software.eu)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/HI-FRIENDS-SDC2/hi-friends/HEAD?urlpath=lab/tree/docs/_static/mybinder_execution.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/HI-FRIENDS-SDC2/hi-friends/HEAD?urlpath=lab/tree/docs/source/_static/mybinder_execution.ipynb)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 [![Documentation Status](https://readthedocs.org/projects/hi-friends-sdc2/badge/?version=latest)](https://hi-friends-sdc2.readthedocs.io/en/latest/?badge=latest)
 
 # HI-FRIENDS team: participation in the SKA Data Challenge 2
 
-This repository contains the workflow used to find and characterize the HI sources in the data cube of the [SKA Data Challenge 2](https://sdc2.astronomers.skatelescope.org/). This is developed by the HI-FRIENDS team. The execution of the workflow was conducted in the [SP-SRC](https://spsrc-user-docs.readthedocs.io/en/latest/) cluster at the [IAA-CSIC](https://www.iaa.csic.es/en/).
+This repository contains the workflow used to find and characterize the HI sources in the data cube of the [SKA Data Challenge 2](https://sdc2.astronomers.skatelescope.org/). This is developed by the HI-FRIENDS team. The execution of the workflow was conducted in the [SP-SRC](https://spsrc-user-docs.readthedocs.io/en/latest/) cluster at the [IAA-CSIC](https://www.iaa.csic.es/en/). Documentation can be found in [HI-FRIENDS SDC2 Documentation](https://hi-friends-sdc2.readthedocs.io/en/latest/) (more details below).
 
 
 ## Summary
@@ -14,6 +14,15 @@ This repository contains the workflow used to find and characterize the HI sourc
 The workflow is managed and executed using [snakemake](https://snakemake.readthedocs.io/en/stable/) workflow management system. It uses `spectral-cube` based on `dask` parallelization tool and `astropy` suite to divide the large cube in smaller pieces. On each of the subcubes, we execute [Sofia-2](https://github.com/SoFiA-Admin/SoFiA-2) for masking the subcubes, find sources and characterize their properties. Finally, the individual catalogs are cleaned, concatenated into a single catalog, and duplicates from the overlapping regions are eliminated. Some diagnostic plots are produced using Jupyter notebook.
 
 The contents of this repository and the solution to participate in the SDC2 are published in Zenodo: TBD
+
+## Installing
+
+For details on installing and using HI-FRIENDS, please visit the documentation: [installation](https://hi-friends-sdc2.readthedocs.io/en/latest/installation.html), [execution](https://hi-friends-sdc2.readthedocs.io/en/latest/execution.html).
+
+## License
+
+We are using GNU General Public License v3.0. See full license [here](https://github.com/HI-FRIENDS-SDC2/hi-friends/blob/master/LICENSE).
+![image](https://user-images.githubusercontent.com/1053066/128527855-268a552d-108d-4920-9067-358098eb8f24.png)
 
 ## Documentation
 
@@ -63,3 +72,30 @@ The repository documentation can be found in the [HI-FRIENDS SDC2](https://hi-fr
   - sofia2cat module
   - split_subcube module
 - Acknowledgments
+
+
+## Contributing
+
+### Coding
+
+Nothing fancy here, just:
+
+1. Fork this repo
+1. Commit you code
+1. Submit a pull request. It will be reviewed by maintainers and they'll give you proper feedback so you can iterate over it.
+
+#### Considerations
+- Make sure existing tests pass
+- Make sure your new code is properly tested and fully-covered
+- Following [The seven rules of a great Git commit message](https://chris.beams.io/posts/git-commit/#seven-rules) is highly encouraged
+- When adding a new feature, branch from [master-branch](<project-master-branch>)
+
+
+### Testing
+
+As mentioned above, existing tests must pass and new features are required to be tested and fully-covered.
+
+### Documenting
+
+Code should be self-documented. But, in case there is any code that may be hard to understand, it must include some comments to make it easier to review and maintain later on.
+
