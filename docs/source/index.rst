@@ -9,7 +9,7 @@ Welcome to HI-FRIENDS SDC2's documentation!
 .. toctree::
    :maxdepth: 3
 
-   introduction
+   introduction.md
    methodology
    workflow
    installation
