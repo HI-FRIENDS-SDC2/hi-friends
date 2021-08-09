@@ -44,7 +44,8 @@ We then filtered the catalog to exclude sources that deviate significantly from 
 
 ![Filtered by D-M correlation](figures/filtered_sources.png)
 
-These results will be uploaded to Zenodo.
+Our results for the SDC2 are published in Zenodo: see file `hi-friends_solution.tgz` in https://zenodo.org/badge/latestdoi/385866513
+
 
 ## Score
 

@@ -15,7 +15,7 @@ This repository contains the workflow used to find and characterize the HI sourc
 
 The workflow is managed and executed using [snakemake](https://snakemake.readthedocs.io/en/stable/) workflow management system. It uses `spectral-cube` based on `dask` parallelization tool and `astropy` suite to divide the large cube in smaller pieces. On each of the subcubes, we execute [Sofia-2](https://github.com/SoFiA-Admin/SoFiA-2) for masking the subcubes, find sources and characterize their properties. Finally, the individual catalogs are cleaned, concatenated into a single catalog, and duplicates from the overlapping regions are eliminated. Some diagnostic plots are produced using Jupyter notebook.
 
-The contents of this repository and the solution to participate in the SDC2 are published in Zenodo: TBD
+The contents of this repository and the solution to participate in the SDC2 are published in Zenodo: see file `hi-friends_solution.tgz` in https://zenodo.org/badge/latestdoi/385866513
 
 ## Installing
 
