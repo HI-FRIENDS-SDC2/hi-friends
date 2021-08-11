@@ -4,6 +4,7 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 [![Documentation Status](https://readthedocs.org/projects/hi-friends-sdc2/badge/?version=latest)](https://hi-friends-sdc2.readthedocs.io/en/latest/?badge=latest)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5167659.svg)](https://doi.org/10.5281/zenodo.5167659)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/5138/badge)](https://bestpractices.coreinfrastructure.org/projects/5138)
 
 ## Summary
 
