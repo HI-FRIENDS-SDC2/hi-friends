@@ -54,5 +54,5 @@ Adhere to coding standards
 Utilise tests 
 
 - [X] Source code has unit tests. [Unit tests](https://github.com/HI-FRIENDS-SDC2/hi-friends/tree/master/.tests/unit), [info unit tests](https://hi-friends-sdc2.readthedocs.io/en/latest/methodology/#unit-tests)
-- [X] Software recommends tools to check conformance to coding standards e.g. A ‘linter’ such as PyLint for Python. [Pylint verification](https://hi-friends-sdc2.readthedocs.io/en/latest/methodology/#check-conformance-to-coding-standards)
+- [X] Software recommends tools to check conformance to coding standards e.g. A ‘linter’ such as PyLint for Python. [Pylint verification](https://hi-friends-sdc2.readthedocs.io/en/latest/methodology.html#check-conformance-to-coding-standards)
 
