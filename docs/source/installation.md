@@ -120,7 +120,9 @@ python -m pytest .tests/unit/
 
 To run the workflow with the Docker container system you need to do the following steps:
 
-#### Build the workflow image
+#### Download or Build the workflow image
+
+##### Build the image
 
 1. Clone the respository from this ``github`` repository:
 
@@ -138,6 +140,20 @@ cd hi-friends
 
 ```
 docker build -t hi-friends-wf -f deploy.docker .
+```
+
+##### Download the image
+
+1. Download the latest image (or choose another version [here](https://zenodo.org/record/5172930)) for docker from Zenodo:
+
+```
+wget -O hi-friends-wf.tgz https://zenodo.org/record/5172930/files/hi-friends-wf.tgz?download=1
+```
+
+2. Load the image:
+
+```
+docker load < hi-friends-wf.tgz
 ```
 
 #### Run the workflow
@@ -168,7 +184,18 @@ python run.py
 
 To run the workflow with singularity you can bild the image from our repository:
 
-#### Build the image:
+#### Download or Build the workflow image
+
+##### Download the image
+
+1. Download the latest image (or choose another version [here](https://zenodo.org/record/5172930)) for singularity from Zenodo:
+
+```
+wget -O hi-friends-wf.sif https://zenodo.org/record/5172930/files/hi-friends-wf.sif?download=1
+```
+
+
+##### Build the image:
 
 1. Clone the respository from this ``github`` repository:
 
