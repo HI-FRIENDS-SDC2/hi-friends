@@ -4,7 +4,7 @@ channels:
   - defaults
 dependencies:
   - astroquery=0.4.3
-  - dask=2021.3.1
+  - dask=2021.10.0
   - ipython=7.22.0
   - matplotlib=3.3.4
   - msgpack-python=1.0.2
