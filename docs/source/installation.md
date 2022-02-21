@@ -309,4 +309,4 @@ snakemake -n
 
 ## Use myBinder
 
-Simply follow [this link](https://mybinder.org/v2/gh/HI-FRIENDS-SDC2/hi-friends/HEAD?urlpath=lab/tree/docs/_static/mybinder_execution.ipynb). After some time, a virtual machine will be created with all the required software. You will start in a jupyter notebook ready to execute a check of the software. In general, myBinder is not thought to conduct heavy processing, so we recommend to use this option only for verification purposes.
+Simply follow [this link](https://mybinder.org/v2/gh/HI-FRIENDS-SDC2/hi-friends/HEAD?urlpath=lab/tree/docs/source/_static/mybinder_execution.ipynb). After some time, a virtual machine will be created with all the required software. You will start in a jupyter notebook ready to execute a check of the software. In general, myBinder is not thought to conduct heavy processing, so we recommend to use this option only for verification purposes.
