@@ -6,6 +6,8 @@
 [![fair-software.eu](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8B%20%20%E2%97%8F%20%20%E2%97%8F-yellow)](https://fair-software.eu)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/5138/badge)](https://bestpractices.coreinfrastructure.org/projects/5138)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
+[![SQAaaS badge shields.io](https://img.shields.io/badge/sqaaas%20software-silver-lightgrey)](https://eu.badgr.com/public/assertions/ju2hGFX7ROi3eOEYF-R_yA "SQAaaS silver badge achieved")
+
 
 ## Summary
 
