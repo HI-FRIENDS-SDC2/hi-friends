@@ -1,4 +1,4 @@
-astropy==4.3.post1
+astropy==5.3.3
 attrs==21.2.0
 cloudpickle==1.6.0
 dask==2021.7.2
